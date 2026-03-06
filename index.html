@@ -1,183 +1,2396 @@
-<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="utf-8">
-  <title>Agent Connect 2.0</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="./assets/css/styles.css">
-  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+    <meta charset="utf-8">
+    <title>AGENT CONNECT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/png" href="./static/logo_branca.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap"
+        rel="stylesheet">
+    <!-- Chart.js CDN (mantido por solicitação) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- D3.js (para visualizações embutidas) -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Marked.js (mantido por solicitação) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
+
 <body>
-  <nav class="mobile-navbar container">
-    <img class="nav-logo" src="./Logo - Diretoria.png" alt="Logo AeC">
-    <div class="brand">Agent<span>Connect</span></div>
-    <button class="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+    <nav class="mobile-navbar container">
+        <img class="nav-logo" src="./static/Logo - Diretoria.png" alt="Logo Diretoria">
+        <img class="brand" src="./static/logo_branca.png" alt="Brand Logo" style="max-height: 40px;">
 
-  <header class="hero container">
-    <div class="hero-grid">
-      <div class="hero-left">
-        <h1 class="title">Agent Connect 2.0</h1>
-        <p class="slogan">Conectando as pessoas certas às demandas certas com IA.</p>
-        <button id="btnPlay" class="play-button">
-          <span class="icon">▶</span>
-          <span class="label">Veja o Match Perfeito</span>
-        </button>
-      </div>
-      <div class="hero-right">
-        <canvas id="hero-canvas" width="466" height="404"></canvas>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="scene-principios" class="scene container principios-section in">
-      <h2 class="scene-title scene-title-lg" style="text-align:center">Nossos Princípios</h2>
-      <div class="principios-grid">
-        <div class="principio-row">
-          <div class="principio-item">
-            <span class="principio-num">01.</span>
-            <span class="principio-text">ACREDITAMOS NA COLABORAÇÃO MÚTUA DOS NOSSOS GRUPOS.</span>
-          </div>
-          <div class="principio-item">
-            <span class="principio-num">02.</span>
-            <span class="principio-text">NÃO ACEITAMOS NADA ABAIXO DO NÍVEL DE EXCELÊNCIA.</span>
-          </div>
+        <div
+            style="display: flex; align-items: center; gap: 12px; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); z-index: 120;">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar Tema">
+                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="display: none;">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <div class="principio-row">
-          <div class="principio-item">
-            <span class="principio-num">03.</span>
-            <span class="principio-text">SOMOS CORAJOSOS PARA MUDARMOS QUANDO NECESSÁRIO.</span>
-          </div>
-          <div class="principio-item">
-            <span class="principio-num">04.</span>
-            <span class="principio-text">SÓ ACREDITAMOS NO SIMPLES.</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    </nav>
 
-    <section id="scene-nossa-solucao" class="scene container solution-section in">
-      <div class="solution-model">
-        <main class="slide-container">
-          <header class="header">
-            <h1>Performance <span>em ação</span></h1>
-          </header>
+    <script>
+        // Inline script para evitar flash of unstyled content
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.add('light-theme');
+            window.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('.icon-sun').style.display = 'block';
+                document.querySelector('.icon-moon').style.display = 'none';
+                document.querySelectorAll('.brand, .hero-left .title img').forEach(img => {
+                    img.src = './static/agent_connect_logo.png';
+                });
+            });
+        }
+    </script>
 
-          <article class="info-card card-telecom">
-            <div class="card-header">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-              <h2>Case Telecom</h2>
+    <header class="hero container">
+        <div class="hero-grid">
+            <div class="hero-left">
+                <h1 class="title"><img src="./static/logo_branca.png" alt="AGENT CONNECT"
+                        style="max-width: 280px; height: auto;"></h1>
+                <p class="slogan" title="Passe o mouse para ver o destaque">Conectando o melhor operador disponivel para
+                    aquela demanda, naquele momento.</p>
+                <button id="btnPlay" class="play-button" aria-label="Inicie sua jornada">
+                    <span class="icon">▶</span>
+                    <span class="label">Inicie sua jornada</span>
+                </button>
             </div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-              <p class="highlight">+33,4%</p>
-              <p class="sub-highlight">Evolução Global do KPI</p>
-              <p style="margin-top:20px;">A cada 10 chamadas recomendadas, 8 são retidas.</p>
-            </div>
-          </article>
-
-          <article class="info-card card-finance">
-            <div class="card-header">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <h2>Case Bancário</h2>
-            </div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-              <p class="highlight">+4,9 p.p</p>
-              <p class="sub-highlight">Aumento na Retenção</p>
-              <p style="margin-top:20px;">Priorização por especialidades dos operadores.</p>
-            </div>
-          </article>
-
-          <section class="info-card card-main" id="solution-main-card" role="button" tabindex="0">
-            <div class="time-view">
-              <h3>Match recomendado gerado para</h3>
-              <div>
-                <span class="time-highlight">60</span>
-                <span class="time-unit">%</span>
-              </div>
-              <p>Das chamadas já seguem as recomendações de IA, otimizando o resultado global da operação.</p>
-            </div>
-            <div class="obj-view" style="display:none">
-              <h3>O Algoritmo do Sucesso</h3>
-              <p style="margin-top:16px; font-size:1.05rem; line-height:1.6;">
-                O <strong>Agent Connect</strong> utiliza Machine Learning para cruzar o perfil do cliente (região, motivo) com o histórico de performance do operador, garantindo o atendimento ideal.
-              </p>
-              <p style="margin-top:12px; opacity:0.85;">Clique para ver o volume de recomendações.</p>
-            </div>
-          </section>
-        </main>
-      </div>
-    </section>
-
-    <section id="workflow-embed" class="container">
-      <div class="workflow-builder">
-        <h2>Processo de Geração do Match</h2>
-        <div class="workflow-canvas">
-          <div class="workflow-column" data-column="1">
-            <div class="node-group">
-              <div class="workflow-node">Input Dados (ECH)</div>
-              <div class="workflow-node">Perfilamento</div>
-            </div>
-          </div>
-          <div class="workflow-column" data-column="2">
-            <div class="node-group">
-              <div class="workflow-node">Algoritmo IA</div>
-            </div>
-          </div>
-          <div class="workflow-column" data-column="3">
-            <div class="node-group">
-              <div class="workflow-node">Recomendação ORBI</div>
-              <div class="workflow-node">Dashboard Gerencial</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container stats-section">
-        <div class="analysis-grid">
-            <div class="analysis-card">
-                <h4>🏆 Prêmio Inovativos 2024</h4>
-                <p>Case de destaque em BPO com o Agent Connect.</p>
-            </div>
-            <div class="analysis-card">
-                <h4>🏅 Best Performance</h4>
-                <p>Excelência na Gestão de Clientes e Retenção.</p>
+            <div class="hero-right">
+                <canvas id="hero-canvas" width="538" height="404" aria-hidden="true"
+                    style="width: 538px; height: 404px;"></canvas>
             </div>
         </div>
-    </section>
+    </header>
 
-  </main>
+    <main>
+        <!-- Seção: Princípios inegociáveis -->
+        <section id="scene-principios" class="scene container principios-section in">
+            <h2 class="scene-title scene-title-lg" style="text-align:center">
+                <span style="color: var(--mdl-text);">Princípios </span><span
+                    style="color: var(--mdl-accent);">Inegociáveis</span>
+            </h2>
+            <div id="principios-list" class="principios-grid" aria-live="polite" aria-atomic="true">
+                <div class="principio-row">
+                    <div class="principio-item" tabindex="0" data-index="0"><span class="principio-num">01.</span><span
+                            class="principio-text">ESTAMOS AQUI PARA <strong>FAZER MELHOR</strong> QUE TODOS.</span>
+                    </div>
+                    <div class="principio-item" tabindex="0" data-index="1"><span class="principio-num">02.</span><span
+                            class="principio-text">FOCAMOS A <strong>INOVAÇÃO</strong> CONSTANTEMENTE.</span></div>
+                </div>
+                <div class="principio-row">
+                    <div class="principio-item" tabindex="0" data-index="2"><span class="principio-num">03.</span><span
+                            class="principio-text">SÓ ACREDITAMOS NO <strong>SIMPLES</strong>.</span></div>
+                    <div class="principio-item" tabindex="0" data-index="3"><span class="principio-num">04.</span><span
+                            class="principio-text">SOMENTE ENTRAMOS NO MERCADO EM QUE PODEMOS FAZER UMA
+                            <strong>CONTRIBUIÇÃO SIGNIFICATIVA</strong>.</span></div>
+                </div>
+                <div class="principio-row">
+                    <div class="principio-item" tabindex="0" data-index="4"><span class="principio-num">05.</span><span
+                            class="principio-text">TEMOS <strong>FOCO</strong>.</span></div>
+                    <div class="principio-item" tabindex="0" data-index="5"><span class="principio-num">06.</span><span
+                            class="principio-text">ACREDITAMOS <strong>NA COLABORAÇÃO MÚTUA</strong> DOS NOSSOS
+                            GRUPOS.</span></div>
+                </div>
+                <div class="principio-row">
+                    <div class="principio-item" tabindex="0" data-index="6"><span class="principio-num">07.</span><span
+                            class="principio-text">NÃO ACEITAMOS NADA QUE ESTEJA ABAIXO DO <strong>NÍVEL DE
+                                EXCELÊNCIA</strong>.</span></div>
+                    <div class="principio-item" tabindex="0" data-index="7"><span class="principio-num">08.</span><span
+                            class="principio-text">SOMOS <strong>HUMILDES E HONESTOS</strong> PARA ADMITIR NOSSOS
+                            ERROS.</span></div>
+                </div>
+                <div class="principio-row">
+                    <div class="principio-item" tabindex="0" data-index="8"><span class="principio-num">09.</span><span
+                            class="principio-text">SOMOS CORAJOSOS O SUFICIENTE PARA <strong>MUDARMOS QUANDO
+                                NECESSÁRIO</strong>.</span></div>
+                    <div class="principio-item" tabindex="0" data-index="9"><span class="principio-num">10.</span><span
+                            class="principio-text"><strong>SOMOS FELIZES</strong> COM O QUE FAZEMOS.</span></div>
+                </div>
+            </div>
+        </section>
 
-  <footer class="footer container">
-    <p>© 2025 Agent Connect — Diretoria de Qualidade e Dados - AeC</p>
-  </footer>
+        <!-- Nova Seção: Conceito (O que é o Agent Connect) -->
+        <section id="scene-conceito" class="scene container in" style="margin-bottom: 2rem;">
+            <div class="solution-model" style="display: flex; flex-direction: column; gap: 24px;">
+                <h2 class="scene-title scene-title-lg" style="text-align:center; letter-spacing: 1px;">
+                    <span style="color: var(--mdl-text);">O que é o </span><span style="color: var(--mdl-accent);">Agent
+                        Connect?</span>
+                </h2>
 
-  <script src="./assets/js/main.js"></script>
-  <script>
-    // Script básico para o toggle do card principal (substituindo a lógica do MonitorIA)
-    const card = document.getElementById('solution-main-card');
-    if(card) {
-        card.addEventListener('click', () => {
-            const timeView = card.querySelector('.time-view');
-            const objView = card.querySelector('.obj-view');
-            if(timeView.style.display === 'none') {
-                timeView.style.display = 'block';
-                objView.style.display = 'none';
-            } else {
-                timeView.style.display = 'none';
-                objView.style.display = 'block';
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 16px;">
+                    <!-- Card 1 -->
+                    <article class="info-card"
+                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--mdl-card-border); background: var(--mdl-card-bg); box-shadow: var(--mdl-card-glow);">
+                        <div class="card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true" style="stroke: var(--mdl-accent);">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <h2 style="font-size: 1.2rem; color: var(--mdl-text); margin: 0;">Inteligência Offboard</h2>
+                        </div>
+                        <div class="card-divider"
+                            style="background: linear-gradient(to right, var(--mdl-card-border), transparent);"></div>
+                        <div class="card-body">
+                            <p style="color: var(--mdl-sub); margin: 0; line-height: 1.6;">Um modelo de aprendizagem de
+                                máquina <strong>completamente autônomo e offboard</strong>. Diferente de sistemas
+                                tradicionais, ele processa dinamicamente fora da operação central e atua como um cérebro
+                                analítico independente.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="info-card"
+                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--mdl-card-border); background: var(--mdl-card-bg); box-shadow: var(--mdl-card-glow);">
+                        <div class="card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true" style="stroke: var(--mdl-accent);">
+                                <path d="M12 2v20"></path>
+                                <path d="m17 5-5-3-5 3"></path>
+                                <path d="m17 19-5 3-5-3"></path>
+                                <path d="M2 12h20"></path>
+                                <path d="m5 7-3 5 3 5"></path>
+                                <path d="m19 7 3 5-3 5"></path>
+                            </svg>
+                            <h2 style="font-size: 1.2rem; color: var(--mdl-text); margin: 0;">Avaliação Histórica</h2>
+                        </div>
+                        <div class="card-divider"
+                            style="background: linear-gradient(to right, var(--mdl-card-border), transparent);"></div>
+                        <div class="card-body">
+                            <p style="color: var(--mdl-sub); margin: 0; line-height: 1.6;">O sistema avalia
+                                continuamente a
+                                <strong>performance histórica de cada operador</strong>, construindo um perfil detalhado
+                                de
+                                suas habilidades, tempos médios e taxas de resolução em diferentes contextos.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="info-card"
+                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--mdl-card-border); background: var(--mdl-card-bg); box-shadow: var(--mdl-card-glow);">
+                        <div class="card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true" style="stroke: var(--mdl-accent);">
+                                <path d="M20 7h-9"></path>
+                                <path d="M14 17H5"></path>
+                                <circle cx="17" cy="17" r="3"></circle>
+                                <circle cx="7" cy="7" r="3"></circle>
+                            </svg>
+                            <h2 style="font-size: 1.2rem; color: var(--mdl-text); margin: 0;">Roteamento Racional</h2>
+                        </div>
+                        <div class="card-divider"
+                            style="background: linear-gradient(to right, var(--mdl-card-border), transparent);"></div>
+                        <div class="card-body">
+                            <p style="color: var(--mdl-sub); margin: 0; line-height: 1.6;">De forma matemática e
+                                racional, ele
+                                determina e direciona a chamada para o <strong>melhor operador disponível naquele
+                                    momento</strong> baseado na demanda e nas <em>skills</em> exigidas daquela
+                                interação.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Nossa solução -->
+        <section id="scene-nossa-solucao" class="scene container solution-section in">
+            <div class="solution-model">
+                <main class="slide-container">
+                    <header class="header">
+                        <h1>Nossa solução <span>em ação</span></h1>
+                    </header>
+
+                    <!-- Cards setoriais -->
+                    <article class="info-card card-telecom">
+                        <div class="card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                            </svg>
+                            <h2>Telecomunicações</h2>
+                        </div>
+                        <div class="card-divider"></div>
+                        <div class="card-body">
+                            <p class="highlight">2 de 3</p>
+                            <p class="sub-highlight">das principais do país</p>
+                            <p style="margin-top:20px;">Mais de 2 mil recomendações por mês</p>
+                        </div>
+                    </article>
+
+                    <article class="info-card card-delivery">
+                        <div class="card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            <h2>Saúde</h2>
+                        </div>
+                        <div class="card-divider"></div>
+                        <div class="card-body">
+                            <p class="highlight">3ª</p>
+                            <p class="sub-highlight">Maior Empresa de Plano de Saúde do Brasil</p>
+                            <p style="margin-top:20px;">Neste ano 2026, adentramos em mais uma industria, a da saúde.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="info-card card-finance">
+                        <div class="card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <h2>Setor Financeiro</h2>
+                        </div>
+                        <div class="card-divider"></div>
+                        <div class="card-body">
+                            <p class="highlight">5º</p>
+                            <p class="sub-highlight">maior banco do Brasil</p>
+                            <p style="margin-top:20px;">Atuação estratégica na experiencia e retenção do cliente.</p>
+                        </div>
+                    </article>
+
+                    <article class="info-card card-ecommerce">
+                        <div class="card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                            <h2>Provedor de Internet</h2>
+                        </div>
+                        <div class="card-divider"></div>
+                        <div class="card-body">
+                            <p class="highlight">A Pioneira</p>
+                            <p class="sub-highlight">em provedor de internet do Brasil</p>
+                            <p style="margin-top:20px;">O Agent Connect avança em todos os setores de negócios e
+                                serviços do Brasil</p>
+                        </div>
+                    </article>
+
+                    <!-- Card principal com toggle: tempo <-> objetivo -->
+                    <section class="info-card card-main" id="solution-main-card" role="button" tabindex="0"
+                        aria-pressed="false" aria-label="Alternar entre tempo e objetivo">
+                        <div class="time-view" aria-hidden="false">
+                            <h3>Por mês o Agent Connect direciona mais de</h3>
+                            <div>
+                                <span class="time-highlight">300k</span>
+                                <span class="time-unit">ligações</span>
+                            </div>
+                            <p>Com o Agent Connect, remodelamos o conceito de otimização de performance, derivando a
+                                chamada do momento para o melhor colaborador disponivel.</p>
+                        </div>
+                        <div class="obj-view" aria-hidden="true">
+                            <h3>Monitoria ágil, decisões melhores.</h3>
+                            <p style="margin-top:16px; font-size:1.05rem; line-height:1.6;">
+                                Nossa solução intensifica a velocidade e aprimora o diagnóstico no atendimento,
+                                integrando IA e a análise contextual para gerar <strong>insights</strong> e
+                                <strong>métricas precisas</strong>.
+                            </p>
+                            <p style="margin-top:12px; opacity:0.85;">Clique para voltar ao tempo médio.</p>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </section>
+
+        <!-- Seção: Nossas Conquistas -->
+        <section id="scene-conquistas" class="scene container in" style="margin-bottom: 4rem;">
+            <div class="solution-model" style="display: flex; flex-direction: column; gap: 24px; align-items: center;">
+                <h2 class="scene-title scene-title-lg" style="text-align:center; letter-spacing: 1px;">
+                    <span style="color: var(--mdl-text);">Nossas </span><span
+                        style="color: var(--mdl-accent);">Conquistas</span>
+                </h2>
+                <p
+                    style="text-align:center; color: var(--mdl-sub); max-width: 600px; margin-bottom: 24px; line-height: 1.6;">
+                    O Agent Connect já é reconhecido no mercado como uma solução transformadora para a gestão e
+                    performance em atendimento.</p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; width: 100%;">
+                    <!-- Prêmio 1 -->
+                    <article class="info-card"
+                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--mdl-card-bg); border-left: 1px solid var(--mdl-card-border); border-right: 1px solid var(--mdl-card-border); border-bottom: 1px solid var(--mdl-card-border); box-shadow: var(--mdl-card-glow); border-radius: 12px; padding: 32px 24px;">
+                        <img src="./static/best_performance.png" alt="Prêmio Best Performance"
+                            style="height: 120px; object-fit: contain; margin-bottom: 24px;">
+                        <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">Best Performance</h3>
+                        <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;"><strong>Agent
+                                Connect - Match Perfeito:</strong><br />IA para conectar pessoas certas a demandas
+                            certas.<br /><em>Excelência na Gestão de Clientes: Retenção</em></p>
+                    </article>
+
+                    <!-- Prêmio 2 -->
+                    <article class="info-card"
+                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; text-align: center;  background: var(--mdl-card-bg); border-left: 1px solid var(--mdl-card-border); border-right: 1px solid var(--mdl-card-border); border-bottom: 1px solid var(--mdl-card-border); box-shadow: var(--mdl-card-glow); border-radius: 12px; padding: 32px 24px;">
+                        <img src="./static/inovativos.png" alt="Premiação Inovativos"
+                            style="height: 120px; object-fit: contain; margin-bottom: 24px;">
+                        <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">Prêmio Inovativos
+                        </h3>
+                        <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;"><strong>Agent
+                                Connect</strong><br /><em>Case destaque (BPO)</em></p>
+                    </article>
+
+                    <!-- Prêmio 3 -->
+                    <article class="info-card"
+                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--mdl-card-bg); border-left: 1px solid var(--mdl-card-border); border-right: 1px solid var(--mdl-card-border); border-bottom: 1px solid var(--mdl-card-border); box-shadow: var(--mdl-card-glow); border-radius: 12px; padding: 32px 24px;">
+                        <img src="./static/customer_summit.png" alt="The Customer Summit Awards"
+                            style="height: 120px; object-fit: contain; margin-bottom: 24px;">
+                        <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">The Customer Summit
+                            Awards</h3>
+                        <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;">
+                            <strong>Tecnologia | Inteligência Artificial</strong><br />Para um atendimento mais humano.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <script>
+            (function () {
+                function bootWorkflow() {
+                    const root = document.getElementById('workflow-embed');
+                    if (!root) return;
+
+                    const nodeDetails = {
+                        'negocio': { title: 'Negócio', description: 'Avaliação das regras de negócio e como são adaptadas para identificação em monitorias com IA.' },
+                        'operacional': { title: 'Operacional', description: 'Compreensão do comportamento operacional para orientação correta e avaliação justa.' },
+                        'experiencia': { title: 'Experiência', description: 'Entendimento de tudo que é relevante para o cliente final, com uma compreensão aprofundada da sua jornada.' },
+                        'imersao-operacional': { title: 'Imersão Operacional', description: 'Janela de estudos sobre comportamentos, oportunidades e tendências operacionais.' },
+                        'imersao-negocio': { title: 'Imersão em Negócio', description: 'Janela de estudo sobre as regras, necessidades e ordenações de processos e do objetivo do negócio.' },
+                        'contexto': { title: 'Construção de Contexto', description: 'Documentação de todo o conhecimento operacional e de negócio para garantir a melhor interpretação do modelo de IA.' },
+                        'sec': { title: 'SEC (Score de Eficiência de Contato)', description: 'Um agrupamento de perguntas que cria um score de condução operacional, qualificando o operador sobre seu comportamento.' },
+                        'iec': { title: 'IEC (Índice de Experiência do Cliente)', description: 'Um agrupamento de perguntas que cria um score de experiência do cliente, qualificando como o cliente vivenciou aquele atendimento.' },
+                        'bps': { title: 'BPS (Bot Performance Score)', description: 'Um agrupamento de perguntas que cria um score de avaliação de sistemas automáticos (BOTS), qualificando seu comportamento e atuação.' },
+                        'sea': { title: 'SEA (Score de Eficiência de Atendimento)', description: 'Um agrupamento de perguntas que cria um score de condução operacional para vendas e churn, identificando rapidamente grupos que são ou não adequados para atendimentos de negociação.' },
+                        'concorrente': { title: 'Concorrente', description: 'Um agrupamento de perguntas voltadas ao suporte do negócio, identificando padrões e desafios impostos pela concorrência.' },
+                        'tendencias': { title: 'Tendências', description: 'Um agrupamento de perguntas que cria uma janela de oportunidade, seja para solucionar um possível problema operacional ou uma oportunidade de vendas.' },
+                        'processos': { title: 'Processos', description: 'Uma avaliação clássica de adequação às regras de negócio: seguiu ou não seguiu o processo?' },
+                        'necessidades-especificas': { title: 'Necessidades Específicas', description: 'Uma avaliação que envolve todas as necessidades diárias de acompanhamento, como a avaliação direta de um script ou de um comportamento que se deseja entender.' },
+                        'acuracia': { title: 'Acurácia', description: 'Medição final da eficácia e precisão do modelo de IA com base no contexto e nos drivers definidos.' }
+                    };
+
+                    const columnDetails = {
+                        '1': { title: 'Coluna 1: Viés', description: 'Etapa do projeto que direciona o viés que a monitoria deve atuar, buscando responder a itens que envolvam uma regra de negócio ou uma expectativa do cliente.' },
+                        '2': { title: 'Coluna 2: Imersão', description: 'Etapa de estudo, com uma série de agendas, leituras de documentos e estruturação de informação.' },
+                        '3': { title: 'Coluna 3: Documentação', description: 'Etapa de estruturação, organiza todo o conhecimento das etapas anteriores para um documento de compreensão do modelo.' },
+                        '4': { title: 'Coluna 4: Motor', description: 'Etapa de desenvolvimento, aplicação do conhecimento ao modelo para responder aos objetivos do estudo.' },
+                        '5': { title: 'Coluna 5: Validação', description: 'Etapa que qualifica os itens anteriores com avaliadores humanos, validando acurácia superior a 85% por pergunta.' }
+                    };
+
+                    const svgLayer = root.querySelector('#workflow-svg-layer');
+                    const canvas = root.querySelector('#workflow-canvas');
+                    const modal = root.querySelector('#node-modal');
+                    const modalTitle = root.querySelector('#modal-title');
+                    const modalDescription = root.querySelector('#modal-description');
+
+                    let activeConnection = { isConnecting: false, startNode: null, startPort: null, pathElement: null };
+                    let existingConnections = new Set();
+
+                    const getPortPosition = (portElement) => {
+                        const canvasRect = canvas.getBoundingClientRect();
+                        const portRect = portElement.getBoundingClientRect();
+                        return {
+                            x: portRect.left - canvasRect.left + (portRect.width / 2),
+                            y: portRect.top - canvasRect.top + (portRect.height / 2),
+                        };
+                    };
+
+                    const createSvgPath = (startPos, endPos) => {
+                        const curveFactor = Math.abs(endPos.x - startPos.x) * 0.6;
+                        return `M ${startPos.x},${startPos.y} C ${startPos.x + curveFactor},${startPos.y} ${endPos.x - curveFactor},${endPos.y} ${endPos.x},${endPos.y}`;
+                    };
+
+                    const cancelConnection = () => {
+                        if (!activeConnection.isConnecting) return;
+                        activeConnection.startPort.classList.remove('port-active');
+                        if (activeConnection.pathElement) activeConnection.pathElement.remove();
+                        root.querySelectorAll('.valid-target').forEach(p => p.classList.remove('valid-target'));
+                        activeConnection = { isConnecting: false, startNode: null, startPort: null, pathElement: null };
+                    };
+
+                    const highlightValidTargets = (startNode) => {
+                        const startColumn = parseInt(startNode.closest('.workflow-column').dataset.column, 10);
+                        const targetColumn = root.querySelector(`.workflow-column[data-column="${startColumn + 1}"]`);
+                        if (targetColumn) {
+                            targetColumn.querySelectorAll('.port-in').forEach(port => port.classList.add('valid-target'));
+                        }
+                    };
+
+                    const triggerFlowAnimation = (endNodeId) => {
+                        const path = [endNodeId];
+                        let currentNodeId = endNodeId;
+                        while (true) {
+                            const parentEdge = [...existingConnections].find(conn => conn.endsWith(`->${currentNodeId}`));
+                            if (!parentEdge) break;
+                            const parentId = parentEdge.split('->')[0];
+                            path.unshift(parentId);
+                            currentNodeId = parentId;
+                        }
+                        path.forEach((nodeId, index) => {
+                            setTimeout(() => {
+                                const node = root.querySelector(`.workflow-node[data-id='${nodeId}']`);
+                                if (node) {
+                                    node.classList.add('node-flow-active');
+                                    setTimeout(() => node.classList.remove('node-flow-active'), 1000);
+                                }
+                            }, index * 250);
+                        });
+                    };
+
+                    const drawConnection = (startNodeId, endNodeId) => {
+                        const connectionId = `${startNodeId}->${endNodeId}`;
+                        if (existingConnections.has(connectionId)) return;
+
+                        const startNode = root.querySelector(`.workflow-node[data-id='${startNodeId}']`);
+                        const endNode = root.querySelector(`.workflow-node[data-id='${endNodeId}']`);
+                        if (!startNode || !endNode) return;
+
+                        const startPort = startNode.querySelector('.port-out');
+                        const endPort = endNode.querySelector('.port-in');
+
+                        startPort.classList.add('connected');
+                        endPort.classList.add('connected');
+
+                        const startPos = getPortPosition(startPort);
+                        const endPos = getPortPosition(endPort);
+
+                        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                        path.setAttribute('d', createSvgPath(startPos, endPos));
+                        path.setAttribute('class', 'connector-path');
+                        path.dataset.from = startNodeId;
+                        path.dataset.to = endNodeId;
+                        svgLayer.appendChild(path);
+
+                        existingConnections.add(connectionId);
+                    };
+
+                    const redrawAllConnections = () => {
+                        svgLayer.innerHTML = '';
+                        const connectionsToRedraw = [...existingConnections];
+                        existingConnections.clear();
+                        root.querySelectorAll('.node-port.connected').forEach(p => p.classList.remove('connected'));
+                        connectionsToRedraw.forEach(connId => {
+                            const [from, to] = connId.split('->');
+                            drawConnection(from, to);
+                        });
+                    };
+
+                    const openModal = (title, description) => {
+                        modalTitle.textContent = title;
+                        modalDescription.textContent = description;
+                        modal.classList.add('visible');
+                    };
+                    const closeModal = () => { modal.classList.remove('visible'); };
+
+                    const handlePortClick = (event) => {
+                        event.stopPropagation();
+                        const clickedPort = event.target;
+                        const parentNode = clickedPort.closest('.workflow-node');
+
+                        if (activeConnection.isConnecting) {
+                            if (clickedPort.classList.contains('valid-target')) {
+                                drawConnection(activeConnection.startNode.dataset.id, parentNode.dataset.id);
+                                triggerFlowAnimation(parentNode.dataset.id);
+                            }
+                            cancelConnection();
+                        } else if (clickedPort.classList.contains('port-out')) {
+                            activeConnection.isConnecting = true;
+                            activeConnection.startNode = parentNode;
+                            activeConnection.startPort = clickedPort;
+                            clickedPort.classList.add('port-active');
+                            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                            path.setAttribute('class', 'connector-path connecting');
+                            activeConnection.pathElement = path;
+                            svgLayer.appendChild(path);
+                            highlightValidTargets(parentNode);
+                        }
+                    };
+
+                    const attachNodeEvents = (nodeElement) => {
+                        nodeElement.addEventListener('click', (e) => {
+                            if (!e.target.classList.contains('node-port')) {
+                                const details = nodeDetails[nodeElement.dataset.id];
+                                if (details) openModal(details.title, details.description);
+                            }
+                        });
+                        nodeElement.querySelectorAll('.node-port').forEach(port => {
+                            port.addEventListener('click', handlePortClick);
+                        });
+                    };
+
+                    // Botão adicionar driver
+                    const addNodeBtn = root.querySelector('#add-node-btn');
+                    const column4Group = root.querySelector('.workflow-column[data-column="4"] .node-group');
+                    addNodeBtn.addEventListener('click', () => {
+                        const nodeName = prompt("Digite o nome do novo driver:", "Avaliação de script");
+                        if (nodeName && nodeName.trim() !== "") {
+                            const nodeId = nodeName.trim().toLowerCase().replace(/\s+/g, '-');
+                            if (nodeDetails[nodeId]) {
+                                alert("Um driver com este nome já existe.");
+                                return;
+                            }
+                            const newNode = document.createElement('div');
+                            newNode.className = 'workflow-node';
+                            newNode.dataset.id = nodeId;
+                            newNode.innerHTML = `${nodeName.trim()}<div class="node-port port-in"></div><div class="node-port port-out"></div>`;
+                            nodeDetails[nodeId] = { title: nodeName.trim(), description: 'Descrição personalizada para este novo driver.' };
+                            attachNodeEvents(newNode);
+                            column4Group.insertBefore(newNode, addNodeBtn);
+                            setTimeout(redrawAllConnections, 50);
+                        }
+                    });
+
+                    // Canvas mouse move para path connecting
+                    canvas.addEventListener('mousemove', (event) => {
+                        if (activeConnection.isConnecting) {
+                            const startPos = getPortPosition(activeConnection.startPort);
+                            const canvasRect = canvas.getBoundingClientRect();
+                            const mousePos = { x: event.clientX - canvasRect.left, y: event.clientY - canvasRect.top };
+                            activeConnection.pathElement.setAttribute('d', createSvgPath(startPos, mousePos));
+                        }
+                    });
+
+                    // Cancelar conexão ao clicar fora
+                    canvas.addEventListener('click', (e) => {
+                        if (activeConnection.isConnecting && !e.target.classList.contains('node-port')) {
+                            cancelConnection();
+                        }
+                    });
+
+                    // Modal close handlers
+                    const closeBtn = root.querySelector('#modal-close-btn');
+                    closeBtn.addEventListener('click', closeModal);
+                    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+                    // Eventos iniciais nos nós e botões de info por coluna
+                    root.querySelectorAll('.workflow-node').forEach(attachNodeEvents);
+                    root.querySelectorAll('.column-info-btn').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const details = columnDetails[btn.dataset.columnId];
+                            if (details) openModal(details.title, details.description);
+                        });
+                    });
+
+                    // Conexões iniciais
+                    [
+                        'experiencia->imersao-negocio',
+                        'imersao-negocio->contexto',
+                        'contexto->iec',
+                        'iec->acuracia',
+                        'operacional->imersao-operacional',
+                        'imersao-operacional->contexto',
+                        'contexto->sec',
+                        'sec->acuracia',
+                        'negocio->imersao-operacional',
+                        'contexto->sea',
+                        'sea->acuracia',
+                        'negocio->imersao-negocio',
+                        'contexto->processos',
+                        'processos->acuracia',
+                        'contexto->necessidades-especificas',
+                        'necessidades-especificas->acuracia'
+                    ].forEach(c => {
+                        const [from, to] = c.split('->');
+                        drawConnection(from, to);
+                    });
+
+                    // Redesenhar ao redimensionar
+                    window.addEventListener('resize', redrawAllConnections, { passive: true });
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', bootWorkflow, { once: true });
+                } else {
+                    bootWorkflow();
+                }
+            })();
+        </script>
+        </section>
+
+        <!-- Seção: Projeto em Produção (escopada) -->
+        <section id="producao-embed" class="scene container in">
+            <style>
+                #producao-embed {
+                    --p-bg: var(--bg);
+                    --p-fg: var(--fg);
+                    --p-muted: var(--muted);
+                    --p-primary: var(--primary);
+                    --p-accent: var(--warn);
+                    --p-card-border: var(--card-border);
+                    --p-shadow: rgba(0, 0, 0, 0.45);
+                    --p-font: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                }
+
+                #producao-embed * {
+                    box-sizing: border-box;
+                }
+
+                #producao-embed .main-title {
+                    font-family: var(--p-font);
+                    color: var(--p-fg);
+                    font-size: clamp(28px, 4.5vw, 42px);
+                    font-weight: 700;
+                    text-align: center;
+                    margin: 0 0 18px 0;
+                }
+
+                #producao-embed .workflow-container {
+                    position: relative;
+                    width: 100%;
+                    max-width: 1366px;
+                    height: min(800px, 70vh);
+                    margin: 0 auto;
+                    border-radius: 12px;
+                    border: 1px solid var(--p-card-border);
+                    background:
+                        linear-gradient(var(--p-card-border) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--p-card-border) 1px, transparent 1px);
+                    background-size: 23px 23px;
+                    box-shadow: 0 15px 40px var(--p-shadow);
+                }
+
+                #producao-embed .workflow-node {
+                    position: absolute;
+                    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+                    border: 1px solid var(--p-card-border);
+                    box-shadow: 0 5px 15px var(--p-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 8px 12px;
+                    font-size: 0.85rem;
+                    color: var(--p-fg);
+                    border-radius: 10px;
+                    opacity: 1;
+                    text-align: center;
+                    width: 145px;
+                    height: 90px;
+                }
+
+                #producao-embed .node-rectangular {
+                    /* Removido min-width fixo para favorecer o tamanho quadrado */
+                }
+
+                #producao-embed .node-icon {
+                    display: none;
+                }
+
+                #producao-embed .node-text .node-title {
+                    font-weight: 600;
+                    color: var(--p-fg);
+                }
+
+                #producao-embed .node-text .node-subtitle {
+                    font-size: 0.8rem;
+                    color: var(--p-muted);
+                }
+
+                #producao-embed .plus-btn {
+                    position: absolute;
+                    width: 24px;
+                    height: 24px;
+                    background-color: rgba(8, 10, 14, 0.7);
+                    border: 1px solid var(--p-card-border);
+                    border-radius: 50%;
+                    color: var(--p-muted);
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                }
+
+                #producao-embed .plus-btn.output-btn {
+                    top: 50%;
+                    right: -12px;
+                    transform: translateY(-50%);
+                }
+
+                #producao-embed .plus-btn.output-btn:hover {
+                    background-color: var(--p-accent);
+                    color: #0f1117;
+                    transform: translateY(-50%) scale(1.1);
+                }
+
+                #producao-embed .plus-btn.info-btn {
+                    top: -12px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                #producao-embed .plus-btn.info-btn:hover {
+                    background-color: var(--p-primary);
+                    color: #0f1117;
+                    transform: translateX(-50%) scale(1.1);
+                }
+
+                #producao-embed #prod-svg-layer {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                }
+
+                #producao-embed .connector-line {
+                    stroke: color-mix(in oklab, var(--p-muted) 65%, var(--p-fg) 35%);
+                    stroke-width: 2.4;
+                    fill: none;
+                    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.4));
+                }
+
+                #producao-embed .dashed-line {
+                    stroke-dasharray: 6 4;
+                }
+
+                #producao-embed .info-box {
+                    position: absolute;
+                    background: #0f1117;
+                    border: 1px solid var(--p-card-border);
+                    border-radius: 10px;
+                    padding: 16px 18px;
+                    width: clamp(260px, 28vw, 360px);
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+                    z-index: 10;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(6px);
+                    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+                }
+
+                #producao-embed .info-box.visible {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+
+                #producao-embed .info-box h4 {
+                    color: var(--p-fg);
+                    margin-bottom: 10px;
+                    font-size: 1.05rem;
+                    font-weight: 700;
+                }
+
+                #producao-embed .info-box p {
+                    font-size: 0.9rem;
+                    line-height: 1.7;
+                    color: var(--p-muted);
+                }
+
+                #producao-embed .info-box p strong {
+                    color: var(--p-fg);
+                    font-weight: 600;
+                }
+
+                #producao-embed .info-box[data-kind="valor"] {
+                    border-top: 3px solid var(--p-accent);
+                }
+
+                #producao-embed .info-box[data-kind="info"] {
+                    border-top: 3px solid var(--p-primary);
+                }
+
+                #producao-embed #base-node {
+                    top: 120px;
+                    left: 90px;
+                }
+
+                #producao-embed #struct-node {
+                    top: 120px;
+                    left: 285px;
+                }
+
+                #producao-embed #params-node {
+                    top: 120px;
+                    left: 480px;
+                }
+
+                #producao-embed #ml-node {
+                    top: 50px;
+                    left: 675px;
+                }
+
+                #producao-embed #monitor-node {
+                    top: 190px;
+                    left: 675px;
+                }
+
+                #producao-embed #profile-node {
+                    top: 330px;
+                    left: 675px;
+                }
+
+                #producao-embed #output-node {
+                    top: 120px;
+                    left: 870px;
+                }
+
+                html.light-theme #producao-embed .info-box {
+                    background: #fff;
+                    color: #111;
+                    border-color: #ddd;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                }
+
+                html.light-theme #producao-embed .info-box h4,
+                html.light-theme #producao-embed .info-box p strong {
+                    color: #000;
+                }
+
+                html.light-theme #producao-embed .info-box p {
+                    color: #444;
+                }
+
+                @media (max-width: 920px) {
+                    #producao-embed .workflow-container {
+                        height: min(520px, 60vh);
+                    }
+                }
+            </style>
+
+            <main class="solution-model">
+                <h2 class="main-title" style="text-align:center;">
+                    <span style="color: var(--mdl-text);">Fluxo técnico </span><span
+                        style="color: var(--mdl-accent);">da solução</span>
+                </h2>
+                <div class="workflow-container">
+                    <svg id="prod-svg-layer" aria-hidden="true">
+                        <!-- Conectores principais -->
+                        <path class="connector-line" d="M 235 165 L 285 165"></path>
+                        <path class="connector-line" d="M 430 165 L 480 165"></path>
+                        <path class="connector-line" d="M 625 165 C 645 165, 655 95, 675 95"></path>
+                        <path class="connector-line" d="M 625 165 C 645 165, 655 235, 675 235"></path>
+                        <path class="connector-line" d="M 625 165 C 645 165, 655 375, 675 375"></path>
+
+                        <!-- Conectores para o Output -->
+                        <path class="connector-line" d="M 820 95 C 845 95, 850 165, 870 165"></path>
+                        <path class="connector-line" d="M 820 235 C 845 235, 850 165, 870 165"></path>
+                        <path class="connector-line" d="M 820 375 C 845 375, 850 165, 870 165"></path>
+                    </svg>
+
+                    <div class="workflow-node node-rectangular" id="base-node">
+                        <div class="plus-btn info-btn" data-target="info-base">+</div>
+                        <div class="node-text">
+                            <div class="node-title">Base de Dados</div>
+                            <div class="node-subtitle">Avaliação Inicial</div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-node node-rectangular" id="struct-node">
+                        <div class="plus-btn info-btn" data-target="info-struct">+</div>
+                        <div class="node-text">
+                            <div class="node-title">Estruturação de Dados</div>
+                            <div class="node-subtitle">Sumarização</div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-node node-rectangular" id="params-node">
+                        <div class="plus-btn info-btn" data-target="info-params">+</div>
+                        <div class="node-text">
+                            <div class="node-title">Definição de Parâmetros</div>
+                            <div class="node-subtitle">Regras de Negócio</div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-node node-rectangular" id="ml-node">
+                        <div class="plus-btn info-btn" data-target="info-ml">+</div>
+                        <div class="node-text">
+                            <div class="node-title">Machine Learning</div>
+                            <div class="node-subtitle">Inteligência Preditiva</div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-node node-rectangular" id="monitor-node">
+                        <div class="plus-btn info-btn" data-target="info-monitor">+</div>
+                        <div class="node-text">
+                            <div class="node-title">MonitorIA</div>
+                            <div class="node-subtitle">Em desenvolvimento</div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-node node-rectangular" id="profile-node">
+                        <div class="plus-btn info-btn" data-target="info-profile">+</div>
+                        <div class="node-text">
+                            <div class="node-title">Mapeamento de Perfil</div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-node node-rectangular" id="output-node">
+                        <div class="plus-btn output-btn" data-target="info-output">+</div>
+                        <div class="node-text">
+                            <div class="node-title">Output de Recomendações</div>
+                            <div class="node-subtitle">Resultado Final</div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="info-box" id="info-base" data-kind="info">
+                        <h4>Consumo de Dados</h4>
+                        <p>A "Base de Dados" concentra todos os registros históricos de ligações e do KPI e em d-1 para
+                            alimentar o
+                            motor de IA.</p>
+                    </div>
+                    <div class="info-box" id="info-struct" data-kind="info">
+                        <h4>Processamento em Banco de Dados</h4>
+                        <p>Conversão de dados brutos dos discadores/chats (ligações e interações) em informações
+                            estruturadas e
+                            categorizadas.</p>
+                    </div>
+                    <div class="info-box" id="info-params" data-kind="info">
+                        <h4>Regras de Negócio</h4>
+                        <p>Configuração dos KPIs, Segmentos, Períodos e perfis de atendimento que definem a prioridade
+                            de recomendação.</p>
+                    </div>
+                    <div class="info-box" id="info-ml" data-kind="valor">
+                        <h4>Aprendizadem de Máquina Supervisionada</h4>
+                        <p>O motor de Machine Learning encontra padrões de sucesso para determinar o "Match" ideal com
+                            base em parâmetros predefinidos.</p>
+                    </div>
+                    <div class="info-box" id="info-monitor" data-kind="valor">
+                        <h4>Análise Qualitativa</h4>
+                        <p>A MonitorIA garante que as recomendações sigam os princípios inegociáveis de qualidade.</p>
+                    </div>
+                    <div class="info-box" id="info-profile" data-kind="info">
+                        <h4>Mapeamento de Perfil</h4>
+                        <p>Com o mapeamento do perfil, temos como objetivo avaliar a percepção do operador no
+                            atendimento, como ele se considera em níveis de performance nos mais variados tipos de
+                            atendimento</p>
+                    </div>
+                    <div class="info-box" id="info-output" data-kind="valor">
+                        <h4>Mailing de Recomendação</h4>
+                        <p>Arquivo .xlsx direcionando operador certo para o parâmetro correto, otimizando o atendimento
+                            e alavancando a experiência do cliente.
+                        </p>
+                    </div>
+                </div>
+            </main>
+
+            <script>
+                (function () {
+                    function bootProducao() {
+                        const root = document.getElementById('producao-embed');
+                        if (!root) return;
+
+                        const container = root.querySelector('.workflow-container');
+                        const infoBoxes = Array.from(root.querySelectorAll('.info-box'));
+                        const plusButtons = root.querySelectorAll('.plus-btn');
+
+                        function placeBox(box, anchorEl) {
+                            if (!box || !anchorEl) return;
+                            const cRect = container.getBoundingClientRect();
+                            const aRect = anchorEl.getBoundingClientRect();
+
+                            const prevVis = box.style.visibility;
+                            const prevDisp = box.style.display;
+                            box.style.visibility = 'hidden';
+                            box.style.display = 'block';
+                            const bw = box.offsetWidth || 320;
+                            const bh = box.offsetHeight || 160;
+                            box.style.visibility = prevVis || '';
+                            box.style.display = prevDisp || '';
+
+                            const offset = 12;
+                            const containerW = container.clientWidth;
+                            const containerH = container.clientHeight;
+
+                            let left = (aRect.right - cRect.left) + offset;
+                            let top = (aRect.top - cRect.top) + (aRect.height - bh) / 2;
+
+                            if (left + bw + 8 > containerW) {
+                                left = (aRect.left - cRect.left) - bw - offset;
+                            }
+                            if (top < 8) top = 8;
+                            if (top + bh + 8 > containerH) top = containerH - bh - 8;
+
+                            if (left < 8) left = 8;
+                            if (left + bw + 8 > containerW) left = containerW - bw - 8;
+
+                            box.style.left = left + 'px';
+                            box.style.top = top + 'px';
+                        }
+
+                        plusButtons.forEach((button) => {
+                            button.addEventListener('click', (event) => {
+                                event.stopPropagation();
+                                const targetId = button.dataset.target;
+                                const targetBox = root.querySelector('#' + targetId);
+                                const anchorNode = button.closest('.workflow-node');
+
+                                const isVisible = targetBox && targetBox.classList.contains('visible');
+                                infoBoxes.forEach(box => box.classList.remove('visible'));
+                                if (!isVisible && targetBox) {
+                                    placeBox(targetBox, anchorNode);
+                                    targetBox.classList.add('visible');
+                                }
+                            });
+                        });
+
+                        root.addEventListener('click', () => {
+                            infoBoxes.forEach(box => box.classList.remove('visible'));
+                        });
+
+                        window.addEventListener('resize', () => {
+                            infoBoxes.forEach((box) => {
+                                if (box.classList.contains('visible')) {
+                                    const anchorId =
+                                        box.id === 'info-base' ? '#base-node' :
+                                            box.id === 'info-struct' ? '#struct-node' :
+                                                box.id === 'info-params' ? '#params-node' :
+                                                    box.id === 'info-ml' ? '#ml-node' :
+                                                        box.id === 'info-monitor' ? '#monitor-node' :
+                                                            box.id === 'info-profile' ? '#profile-node' :
+                                                                '#output-node';
+                                    const anchor = root.querySelector(anchorId);
+                                    placeBox(box, anchor);
+                                }
+                            });
+                        }, { passive: true });
+                    }
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', bootProducao, { once: true });
+                    } else {
+                        bootProducao();
+                    }
+                })();
+            </script>
+        </section>
+
+
+
+        <!-- Seção: Amostra (embed estático) -->
+        <section id="agent-na-pratica" class="scene container">
+            <style>
+                /* Scoped styles para o embed de amostra (copiados e escopados) */
+                #agent-na-pratica {
+                    --color-green: #037a34;
+                    --color-yellow: #e7ba07;
+                    --color-red: #d81a05;
+                    --color-blue: #3498db;
+                    --color-text: var(--fg);
+                    --font-family: "Space Grotesk", sans-serif;
+                }
+
+                #agent-na-pratica * {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #agent-na-pratica {
+                    color: var(--color-text);
+                }
+
+                #agent-na-pratica .am-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 5vh 20px;
+                }
+
+                #agent-na-pratica #graphic {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                }
+
+                #agent-na-pratica .group-label {
+                    position: absolute;
+                    top: 0%;
+                    transform: translateX(-50%);
+                    background: rgba(0, 0, 0, 0.4);
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    padding: 8px 14px;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                    text-align: center;
+                    color: var(--color-text);
+                    opacity: 0;
+                    transition: opacity 0.6s ease;
+                    pointer-events: none;
+                    backdrop-filter: blur(4px);
+                    max-width: 200px;
+                    line-height: 1.3;
+                    z-index: 20;
+                }
+
+                html.light-theme #agent-na-pratica .group-label {
+                    background: rgba(255, 255, 255, 0.85);
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    backdrop-filter: blur(8px);
+                }
+
+                #agent-na-pratica .circle.is-ejected {
+                    z-index: 1000;
+                }
+
+                #agent-na-pratica .circle {
+                    cursor: pointer;
+                }
+
+                #agent-na-pratica #amostra-visualization-container.population-view #label-left,
+                #agent-na-pratica #amostra-visualization-container.sample-view #label-left,
+                #agent-na-pratica #amostra-visualization-container.match-view #label-left {
+                    opacity: 1;
+                }
+
+                #agent-na-pratica #amostra-visualization-container.sample-view #label-center,
+                #agent-na-pratica #amostra-visualization-container.match-view #label-center {
+                    opacity: 1;
+                }
+
+                #agent-na-pratica #amostra-visualization-container.match-view #label-right {
+                    opacity: 1;
+                }
+
+                #agent-na-pratica .legend {
+                    display: flex;
+                    gap: 20px;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    z-index: 100;
+                    margin-bottom: 20px;
+                }
+
+                #agent-na-pratica .legend-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 0.9rem;
+                    font-weight: 700;
+                }
+
+                #agent-na-pratica .color-box {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                }
+
+                #agent-na-pratica #amostra-visualization-container {
+                    position: relative;
+                    width: 1100px;
+                    height: 500px;
+                }
+
+                #agent-na-pratica .circle {
+                    position: absolute;
+                    border-radius: 50%;
+                    transition: opacity 0.5s ease-in-out;
+                    pointer-events: auto;
+                }
+
+                /* Shapes for Amostra */
+                #agent-na-pratica .shape-fatura,
+                #agent-na-pratica .shape-cartao,
+                #agent-na-pratica .shape-pix,
+                #agent-na-pratica #amostra-visualization-container.sample-view .circle.is-sample {
+                    /* Movimento gerenciado pelo D3 para evitar conflitos de performance */
+                }
+
+                #agent-na-pratica #amostra-visualization-container.match-view .circle.is-match {
+                    animation: am-pulse 2.5s infinite ease-in-out;
+                }
+
+                /* Repetir Button removed (fully interactive via legend now) */
+
+                #agent-na-pratica #amostra-tooltip {
+                    position: fixed;
+                    background-color: rgba(40, 40, 40, 0.95);
+                    border: 1px solid #555;
+                    border-radius: 8px;
+                    padding: 15px;
+                    color: var(--color-text);
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.3s;
+                    min-width: 220px;
+                    font-size: 0.95rem;
+                    z-index: 999;
+                    font-family: var(--font-family);
+                }
+
+                #agent-na-pratica #amostra-tooltip.visible {
+                    opacity: 1;
+                }
+
+                #agent-na-pratica #amostra-tooltip h3 {
+                    margin-bottom: 10px;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    /* A cor varia dinamicamente via JS inline-style */
+                }
+
+                #agent-na-pratica #amostra-tooltip table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                #agent-na-pratica #amostra-tooltip td {
+                    padding: 6px 0;
+                    border-bottom: 1px solid #444;
+                }
+
+                #agent-na-pratica #amostra-tooltip tr:last-child td {
+                    border-bottom: none;
+                }
+
+                #agent-na-pratica #amostra-tooltip td:last-child {
+                    text-align: right;
+                    font-weight: bold;
+                }
+
+                #agent-na-pratica #btn-repetir-amostra:hover {
+                    background: rgba(255, 255, 255, 0.12);
+                    border-color: var(--mdl-accent);
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0, 245, 212, 0.2);
+                }
+
+                #agent-na-pratica #btn-repetir-amostra svg {
+                    width: 14px;
+                    height: 14px;
+                    fill: currentColor;
+                }
+
+                html.light-theme #agent-na-pratica #btn-repetir-amostra {
+                    background: rgba(0, 0, 0, 0.05);
+                    border-color: rgba(0, 0, 0, 0.1);
+                    color: var(--fg);
+                }
+
+                html.light-theme #agent-na-pratica #btn-repetir-amostra:hover {
+                    background: rgba(0, 0, 0, 0.1);
+                    border-color: var(--mdl-accent);
+                }
+
+                @keyframes am-pulse {
+
+                    0%,
+                    100% {
+                        opacity: 1;
+                        filter: brightness(1.2);
+                    }
+
+                    50% {
+                        opacity: 0.3;
+                        filter: brightness(0.7);
+                    }
+                }
+
+                html.light-theme #agent-na-pratica #amostra-tooltip {
+                    background: #fff;
+                    color: #111;
+                    border-color: #ddd;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                }
+
+                html.light-theme #agent-na-pratica #amostra-tooltip td {
+                    border-color: #eee;
+                }
+            </style>
+
+            <main class="container">
+                <div class="solution-model" style="display: flex; flex-direction: column; align-items: center;">
+                    <h2 class="scene-title scene-title-lg" style="text-align:center;">
+                        <span style="color: var(--mdl-text);">Agent </span><span style="color: var(--mdl-accent);">na
+                            prática</span>
+                    </h2>
+                </div>
+                <div class="am-wrapper">
+                    <div id="graphic">
+                        <!-- Repetir button removed for dynamic legend interface -->
+                        <div id="amostra-visualization-container" class="population-view">
+                            <div id="label-left" class="group-label" style="left: 16%;">Bolsão de Atendimentos
+                                75,0% | NPS
+                            </div>
+                            <div id="label-center" class="group-label" style="left: 50%;"> Atendimentos - Fatura
+                                73,5% | NPS</div>
+                            <div id="label-right" class="group-label" style="left: 84%;"> Matchs - Skill Fatura
+                                87,2% | NPS
+                            </div>
+                            <div id="amostra-tooltip"></div>
+                            <!-- Círculos injetados via D3.js -->
+                        </div>
+                        <div class="legend" style="margin-top: -1rem; position: relative; z-index: 100;">
+                            <div class="legend-item" data-type="green"
+                                style="cursor: pointer; transition: opacity 0.3s;">
+                                <span class="color-box shape-fatura"
+                                    style="background-color: var(--color-green);"></span>Fatura
+                            </div>
+                            <div class="legend-item" data-type="yellow"
+                                style="cursor: pointer; transition: opacity 0.3s;">
+                                <span class="color-box shape-pix"
+                                    style="background-color: var(--color-yellow);"></span>Pix
+                            </div>
+                            <div class="legend-item" data-type="red" style="cursor: pointer; transition: opacity 0.3s;">
+                                <span class="color-box shape-cartao"
+                                    style="background-color: var(--color-red);"></span>Cartão
+                            </div>
+                            <div class="legend-item" data-type="blue"
+                                style="cursor: pointer; transition: opacity 0.3s;">
+                                <span class="color-box shape-cancelamento"
+                                    style="background-color: var(--color-blue);"></span>Cancelamento
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <script>
+                (function () {
+                    function bootAmostra() {
+                        const root = document.getElementById('agent-na-pratica');
+                        if (!root || typeof d3 === 'undefined') return;
+
+                        const container = d3.select('#amostra-visualization-container');
+
+                        const width = 1100;
+                        const height = 500;
+
+                        const config = {
+                            countPerType: 20, // 20 of each type (80 total)
+                            matchCount: 8    // 8 Pulsing Greens
+                        };
+
+                        const rootStyles = getComputedStyle(root);
+                        const colorMap = {
+                            green: rootStyles.getPropertyValue('--color-green').trim(),
+                            yellow: rootStyles.getPropertyValue('--color-yellow').trim(),
+                            red: rootStyles.getPropertyValue('--color-red').trim(),
+                            blue: rootStyles.getPropertyValue('--color-blue').trim()
+                        };
+
+                        let nodes = [];
+                        let simulation;
+
+                        function createNodes() {
+                            const types = ['green', 'yellow', 'red', 'blue'];
+
+                            nodes = [];
+                            let id = 0;
+
+                            types.forEach(type => {
+                                let matchCounter = 0;
+                                for (let i = 0; i < config.countPerType; i++) {
+                                    const isMatch = matchCounter < config.matchCount; // Every type gets 8 matches
+                                    if (isMatch) matchCounter++;
+
+                                    let npsScore;
+                                    let statusText = 'Sem skill';
+                                    let typeName = '';
+
+                                    if (type === 'green') typeName = 'Fatura';
+                                    else if (type === 'yellow') typeName = 'Pix';
+                                    else if (type === 'red') typeName = 'Cartão';
+                                    else if (type === 'blue') typeName = 'Cancelamento';
+
+                                    if (isMatch) {
+                                        npsScore = (Math.random() * (100 - 73.6) + 73.6).toFixed(1);
+                                        statusText = 'Match';
+                                    } else {
+                                        npsScore = (Math.random() * 73.4).toFixed(1);
+                                        statusText = 'Não Match';
+                                    }
+
+                                    nodes.push({
+                                        id: id++,
+                                        radius: Math.random() * 15 + 5,
+                                        color: colorMap[type],
+                                        type: type,
+                                        typeName: typeName,
+                                        npsScore: npsScore,
+                                        statusText: statusText,
+                                        isMatch: isMatch,
+                                        isEjected: false
+                                    });
+                                }
+                            });
+                        }
+
+                        function createSimulation() {
+                            const circles = container.selectAll('.circle')
+                                .data(nodes, d => d.id)
+                                .join('div')
+                                .attr('class', d => {
+                                    let cls = 'circle';
+                                    if (d.isSample) cls += ' is-sample';
+                                    if (d.isMatch) cls += ' is-match';
+                                    if (d.type === 'yellow') cls += ' shape-pix';
+                                    else if (d.type === 'green') cls += ' shape-fatura';
+                                    else if (d.type === 'red') cls += ' shape-cartao';
+                                    else if (d.type === 'blue') cls += ' shape-cancelamento';
+                                    return cls;
+                                })
+                                .style('width', d => (d.radius * 2) + 'px')
+                                .style('height', d => (d.radius * 2) + 'px')
+                                .style('background-color', d => d.color)
+                                .on('click', function (event, d) {
+                                    d.isEjected = !d.isEjected;
+                                    d3.select(this).classed('is-ejected', d.isEjected);
+
+                                    if (d.isEjected) {
+                                        // Calculate outward vector based on current stage group center
+                                        let groupX = width / 2;
+                                        if (currentStage === 0) {
+                                            groupX = width * 0.16;
+                                        } else if (currentStage === 1) {
+                                            if (d.type === selectedType) groupX = width * 0.5;
+                                            else groupX = width * 0.16;
+                                        } else if (currentStage === 2) {
+                                            if (d.type === selectedType && d.isMatch) groupX = width * 0.84;
+                                            else if (d.type === selectedType && !d.isMatch) groupX = width * 0.5;
+                                            else groupX = width * 0.16;
+                                        }
+                                        const groupY = height * 0.55;
+
+                                        const dx = d.x - groupX;
+                                        const dy = d.y - groupY;
+                                        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+
+                                        // Push out slightly from its current position relative to group
+                                        const ejectDistance = 45;
+                                        d.ejectTargetX = groupX + (dx / dist) * (dist + ejectDistance);
+                                        d.ejectTargetY = groupY + (dy / dist) * (dist + ejectDistance);
+
+                                        // Show tooltip
+                                        const tooltip = document.getElementById('amostra-tooltip');
+                                        if (tooltip) {
+                                            const statusRow = (groupX === width * 0.16)
+                                                ? ''
+                                                : `<tr><td>Status:</td><td>${d.statusText}</td></tr>`;
+
+                                            tooltip.innerHTML = `
+                                                <h3 style="color: ${d.color};">Motivo: ${d.typeName}</h3>
+                                                <table>
+                                                    <tr><td>NPS:</td><td>${d.npsScore}%</td></tr>
+                                                    ${statusRow}
+                                                </table>
+                                            `;
+
+                                            // Position logic: if we are on the right half of the screen, open to the left
+                                            const tooltipWidth = 220; // min-width value
+                                            let left = event.clientX;
+
+                                            if (event.clientX > window.innerWidth / 2) {
+                                                left = event.clientX - tooltipWidth - 25; // open left of cursor
+                                            } else {
+                                                left = event.clientX + 15; // open right of cursor
+                                            }
+
+                                            let top = event.clientY + 15;
+
+                                            // Fallback safety bounds
+                                            if (left < 10) left = 10;
+                                            if (left + tooltipWidth > window.innerWidth) left = window.innerWidth - tooltipWidth - 10;
+
+                                            tooltip.style.left = left + 'px';
+                                            tooltip.style.top = top + 'px';
+                                            tooltip.classList.add('visible');
+                                        }
+                                    } else {
+                                        // Hide tooltip when returning to group
+                                        const tooltip = document.getElementById('amostra-tooltip');
+                                        if (tooltip) tooltip.classList.remove('visible');
+                                    }
+
+                                    applyForces(); // Re-evaluate forces based on new state/targets
+                                });
+
+                            // Hide tooltip if clicking outside circles
+                            document.addEventListener('click', (e) => {
+                                if (!e.target.closest('#agent-na-pratica .circle') && !e.target.closest('#amostra-tooltip')) {
+                                    const tooltip = document.getElementById('amostra-tooltip');
+                                    if (tooltip) tooltip.classList.remove('visible');
+
+                                    // Optional: return all ejected circles
+                                    let needsUpdate = false;
+                                    nodes.forEach(n => {
+                                        if (n.isEjected) {
+                                            n.isEjected = false;
+                                            needsUpdate = true;
+                                        }
+                                    });
+                                    if (needsUpdate) {
+                                        container.selectAll('.circle').classed('is-ejected', false);
+                                        applyForces();
+                                    }
+                                }
+                            });
+
+                            const ticked = () => {
+                                circles.style('transform', d => `translate(${d.x - d.radius}px, ${d.y - d.radius}px)`);
+                            };
+
+                            simulation = d3.forceSimulation(nodes)
+                                .force('collide', d3.forceCollide(d => d.isEjected ? d.radius + 8 : d.radius + 1.5).strength(1))
+                                .on('tick', ticked);
+                        }
+
+                        let currentStage = 0; // 0=population, 1=sample, 2=match
+                        let selectedType = null; // Currently animating type
+
+                        function applyForces() {
+                            if (!simulation) return;
+
+                            // Base Y target
+                            const baseY = height * 0.55;
+
+                            simulation.force('y', d3.forceY(d => {
+                                if (d.isEjected && d.ejectTargetY) return d.ejectTargetY;
+                                return baseY;
+                            }).strength(d => d.isEjected ? 0.25 : 0.05));
+
+                            simulation.force('x', d3.forceX(d => {
+                                if (d.isEjected && d.ejectTargetX) return d.ejectTargetX;
+
+                                let targetX = width / 2; // Default fallback
+                                if (currentStage === 0) {
+                                    targetX = width * 0.16;
+                                } else if (currentStage === 1) {
+                                    if (d.type === selectedType) targetX = width * 0.5;
+                                    else targetX = width * 0.16;
+                                } else if (currentStage === 2) {
+                                    if (d.type === selectedType && d.isMatch) targetX = width * 0.84;
+                                    else if (d.type === selectedType && !d.isMatch) targetX = width * 0.5;
+                                    else targetX = width * 0.16;
+                                }
+
+                                return targetX;
+                            }).strength(d => d.isEjected ? 0.25 : (currentStage === 0 ? 0.1 : 0.15)));
+
+                            simulation.alpha(0.3).restart();
+                        }
+
+                        let s1Timeout, s2Timeout;
+
+                        function getTypeName(type) {
+                            if (type === 'green') return 'Fatura';
+                            if (type === 'yellow') return 'Pix';
+                            if (type === 'red') return 'Cartão';
+                            if (type === 'blue') return 'Cancelamento';
+                            return '';
+                        }
+
+                        function getAvgNPS(type) {
+                            if (type === 'green') return '73,5%';
+                            if (type === 'yellow') return '76,2%';
+                            if (type === 'red') return '71,8%';
+                            if (type === 'blue') return '68,4%';
+                            return '75,0%';
+                        }
+
+                        function runDynamicSequence(type) {
+                            clearTimeout(s1Timeout);
+                            clearTimeout(s2Timeout);
+
+                            // Return ejected circles to avoid glitches
+                            nodes.forEach(n => { n.isEjected = false; });
+                            container.selectAll('.circle').classed('is-ejected', false);
+
+                            selectedType = type;
+                            const typeName = getTypeName(type);
+
+                            // Update labels
+                            document.getElementById('label-center').innerHTML = `Atendimentos - ${typeName}<br/>${getAvgNPS(type)} | NPS`;
+                            document.getElementById('label-right').innerHTML = `Matchs - Skill ${typeName}<br/>87,2% | NPS`;
+
+                            // Stage 0: Gather everything in population first
+                            currentStage = 0;
+                            container.node().className = 'population-view';
+                            applyForces();
+
+                            // Stage 1: Sample (extract specific type)
+                            // Short delay to let them gather slightly before pulling out
+                            s1Timeout = setTimeout(() => {
+                                currentStage = 1;
+                                container.node().className = 'sample-view';
+                                applyForces();
+                            }, 500);
+
+                            // Stage 2: Match (extract matches of specific type)
+                            s2Timeout = setTimeout(() => {
+                                currentStage = 2;
+                                container.node().className = 'match-view';
+                                applyForces();
+                            }, 5000); // 5 seconds later
+                        }
+
+                        // Add Legend Interactivity
+                        document.querySelectorAll('#agent-na-pratica .legend-item').forEach(item => {
+                            item.addEventListener('click', () => {
+                                const type = item.getAttribute('data-type');
+                                if (type) {
+                                    runDynamicSequence(type);
+                                }
+                            });
+
+                            // Visual hover effect handled by CSS (if any), but JS can add a highlight state if needed
+                        });
+
+                        const observer = new IntersectionObserver((entries) => {
+                            // Automatically start stage 0 on view, user triggers the rest
+                            if (entries[0].isIntersecting && currentStage === 0 && !selectedType) {
+                                applyForces();
+                            }
+                        }, { threshold: 0.5 });
+
+                        createNodes();
+                        createSimulation();
+
+                        // Triggers the animation once on scroll
+                        observer.observe(root);
+                    }
+
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', bootAmostra, { once: true });
+                    } else {
+                        bootAmostra();
+                    }
+                })();
+            </script>
+        </section>
+
+        <!-- Seção: Quartis (embed estático) -->
+        <section id="quartil-embed" class="container">
+            <style>
+                #quartil-embed {
+                    --color-green: #2ECC71;
+                    --color-yellow: #F1C40F;
+                    --color-red: #E74C3C;
+                    --color-q1-blue: #3498DB;
+                    --color-q2-green: #2ECC71;
+                    --color-q3-orange: #F39C12;
+                    --color-q4-red: #E74C3C;
+                    --color-text: #EAEAEA;
+                    --color-text-muted: #888;
+                }
+
+                #quartil-embed * {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #quartil-embed .quartil-container {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    width: 100%;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 5vh 20px;
+                }
+
+                #quartil-embed #steps {
+                    width: 40%;
+                    padding-left: 50px;
+                    position: relative;
+                    z-index: 10;
+                }
+
+                #quartil-embed .step {
+                    min-height: 80vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    opacity: 0.3;
+                    transition: opacity 0.5s ease-in-out;
+                    padding-bottom: 20vh;
+                }
+
+                #quartil-embed .step.is-active {
+                    opacity: 1;
+                }
+
+                #quartil-embed .step .title {
+                    font-weight: 500;
+                    font-size: 1rem;
+                    margin-bottom: 10px;
+                    color: var(--color-yellow);
+                    text-transform: uppercase;
+                }
+
+                #quartil-embed .step h1 {
+                    font-size: 2.8rem;
+                    line-height: 1.15;
+                    margin-bottom: 25px;
+                    font-weight: 700;
+                }
+
+                #quartil-embed .step .stats {
+                    list-style: none;
+                    font-size: 1.1rem;
+                    line-height: 1.8;
+                    color: var(--color-text-muted);
+                }
+
+                #quartil-embed .step .stats li {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    padding: 8px 0;
+                }
+
+                #quartil-embed .step .stats li:first-child {
+                    padding-top: 0;
+                }
+
+                #quartil-embed .step .stats li:last-child {
+                    border-bottom: none;
+                }
+
+                #quartil-embed .step-metrics-card {
+                    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 12px;
+                    padding: 20px;
+                    margin-top: 15px;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+                }
+
+                html.light-theme #quartil-embed .step-metrics-card {
+                    background: linear-gradient(145deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01));
+                    border: 1px solid rgba(0, 0, 0, 0.08);
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+                }
+
+                #quartil-embed .step-metrics-card .metric-row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 12px;
+                    padding-bottom: 12px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                }
+
+                html.light-theme #quartil-embed .step-metrics-card .metric-row {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                }
+
+                #quartil-embed .step-metrics-card .metric-row:last-child {
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                    border-bottom: none;
+                }
+
+                #quartil-embed .step-metrics-card .metric-label {
+                    color: var(--color-text-muted);
+                    font-size: 0.95rem;
+                }
+
+                #quartil-embed .step-metrics-card .metric-value {
+                    color: var(--color-text);
+                    font-weight: 700;
+                    font-size: 1rem;
+                }
+
+                #quartil-embed .step-metrics-card .highlight-value {
+                    color: var(--color-cyan) !important;
+                }
+
+                #quartil-embed #graphic {
+                    width: 60%;
+                    height: 100vh;
+                    position: sticky;
+                    top: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                #quartil-embed .legend {
+                    display: flex;
+                    gap: 20px;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    z-index: 100;
+                    margin-bottom: 20px;
+                    transition: opacity 0.3s ease-in-out;
+                }
+
+                #quartil-embed .legend-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 0.9rem;
+                    font-weight: 700;
+                }
+
+                #quartil-embed .color-box {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                }
+
+                #quartil-embed #visualization-container {
+                    position: relative;
+                    width: 100%;
+                    height: 700px;
+                }
+
+                #quartil-embed .circle {
+                    position: absolute;
+                    border-radius: 50%;
+                    transition: opacity 0.5s ease-in-out, transform 0.2s linear;
+                }
+
+                #quartil-embed #visualization-container.sample-view .circle:not(.is-sample) {
+                    opacity: 0.2;
+                }
+
+                #quartil-embed #visualization-container.sample-view .circle.is-sample {
+                    opacity: 1;
+                }
+
+                #quartil-embed #tooltip {
+                    position: fixed;
+                    background-color: rgba(40, 40, 40, 0.95);
+                    border: 1px solid #555;
+                    border-radius: 8px;
+                    padding: 15px;
+                    color: var(--color-text);
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.3s;
+                    min-width: 220px;
+                    font-size: 0.95rem;
+                    z-index: 999;
+                }
+
+                #quartil-embed #tooltip.visible {
+                    opacity: 1;
+                }
+
+                #quartil-embed #tooltip h3 {
+                    margin-bottom: 10px;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    color: var(--color-yellow);
+                }
+
+                #quartil-embed #tooltip table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                #quartil-embed #tooltip td {
+                    padding: 6px 0;
+                    border-bottom: 1px solid #444;
+                }
+
+                #quartil-embed #tooltip tr:last-child td {
+                    border-bottom: none;
+                }
+
+                #quartil-embed #tooltip td:last-child {
+                    text-align: right;
+                    font-weight: bold;
+                }
+
+                #quartil-embed .rank-title {
+                    position: absolute;
+                    color: var(--color-text-muted);
+                    font-weight: 500;
+                    font-size: 1rem;
+                    opacity: 0;
+                    transition: opacity 0.5s ease-in-out;
+                    white-space: nowrap;
+                }
+
+                #quartil-embed .rank-title.visible {
+                    opacity: 1;
+                }
+
+                #quartil-embed #rank-title-2 {
+                    top: 15%;
+                    left: 10%;
+                }
+
+                #quartil-embed #rank-title-3 {
+                    top: 50%;
+                    left: 5%;
+                }
+
+                #quartil-embed #rank-title-4 {
+                    top: 85%;
+                    left: 0%;
+                }
+
+                html.light-theme #quartil-embed .step .stats li,
+                html.light-theme #quartil-embed #tooltip td {
+                    border-color: rgba(0, 0, 0, 0.1);
+                }
+
+                html.light-theme #quartil-embed #tooltip {
+                    background: #fff;
+                    color: #111;
+                    border-color: #ddd;
+                }
+            </style>
+
+            <div class="solution-model"
+                style="display: flex; flex-direction: column; align-items: center; padding-top: 4rem; margin-bottom: 2rem;">
+                <h2 class="scene-title scene-title-lg" style="text-align:center; margin-bottom: 1rem;">
+                    <span style="color: var(--mdl-text);">Indicadores </span><span
+                        style="color: var(--mdl-accent);">Agent</span>
+                </h2>
+                <p
+                    style="text-align: center; max-width: 800px; color: var(--mdl-text); font-size: 1.1rem; line-height: 1.6; opacity: 0.9;">
+                    Acompanhe a evolução da Taxa de Interceptação em três etapas críticas, demonstrando o crescimento da
+                    eficiência do modelo Agent Connect.
+                </p>
+            </div>
+
+            <main class="quartil-container">
+                <div id="graphic">
+                    <div id="legend-quartiles" class="legend" style="display: none;">
+                        <div class="legend-item"><span class="color-box"
+                                style="background-color: var(--color-q1-blue);"></span>1° Quartil</div>
+                        <div class="legend-item"><span class="color-box"
+                                style="background-color: var(--color-q2-green);"></span>2° Quartil</div>
+                        <div class="legend-item"><span class="color-box"
+                                style="background-color: var(--color-q3-orange);"></span>3° Quartil</div>
+                        <div class="legend-item"><span class="color-box"
+                                style="background-color: var(--color-q4-red);"></span>4° Quartil</div>
+                    </div>
+                    <div id="visualization-container">
+                        <!-- Círculos serão injetados aqui via D3.js -->
+                        <div id="tooltip"></div>
+                        <!-- Títulos para o Ranking da Sessão 4 -->
+                        <div id="rank-title-1" class="rank-title">1° Posição - SEC 444</div>
+                        <div id="rank-title-2" class="rank-title">2° Posição - SEC 415</div>
+                        <div id="rank-title-3" class="rank-title">3° Posição - SEC 402</div>
+                        <div id="rank-title-4" class="rank-title">4° Posição - SEC 388</div>
+                    </div>
+                </div>
+
+                <div id="steps">
+                    <section class="step" data-view="stage-1">
+                        <article class="info-card"
+                            style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
+                            <div class="card-header"
+                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true"
+                                    style="stroke: var(--mdl-accent, #00f5d4);">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                                </svg>
+                                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">
+                                    Start</h2>
+                            </div>
+                            <div class="card-divider"
+                                style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
+                            </div>
+                            <div class="card-body" style="display: flex; flex-direction: column;">
+                                <p class="highlight"
+                                    style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
+                                    33%</p>
+                                <p class="sub-highlight"
+                                    style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
+                                    Taxa de Interceptação</p>
+
+                                <div
+                                    style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
+                                    <div>
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Geral</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">75%</span>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Recomendado</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+
+                    <section class="step" data-view="stage-2">
+                        <article class="info-card"
+                            style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
+                            <div class="card-header"
+                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true"
+                                    style="stroke: var(--mdl-accent, #00f5d4);">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                                </svg>
+                                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">1ª
+                                    Projeção</h2>
+                            </div>
+                            <div class="card-divider"
+                                style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
+                            </div>
+                            <div class="card-body" style="display: flex; flex-direction: column;">
+                                <p class="highlight"
+                                    style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
+                                    50%</p>
+                                <p class="sub-highlight"
+                                    style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
+                                    Taxa de Interceptação</p>
+
+                                <div
+                                    style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
+                                    <div>
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Geral</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">77%</span>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Recomendado</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+
+                    <section class="step" data-view="stage-3">
+                        <article class="info-card"
+                            style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
+                            <div class="card-header"
+                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true"
+                                    style="stroke: var(--mdl-accent, #00f5d4);">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                                </svg>
+                                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">2ª
+                                    Projeção</h2>
+                            </div>
+                            <div class="card-divider"
+                                style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
+                            </div>
+                            <div class="card-body" style="display: flex; flex-direction: column;">
+                                <p class="highlight"
+                                    style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
+                                    67%</p>
+                                <p class="sub-highlight"
+                                    style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
+                                    Taxa de Interceptação</p>
+
+                                <div
+                                    style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
+                                    <div>
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Geral</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">79%</span>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Recomendado</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </main>
+
+            <script>
+                (function () {
+                    function bootQuartil() {
+                        const root = document.getElementById('quartil-embed');
+                        if (!root || typeof d3 === 'undefined') return;
+
+                        const container = d3.select('#quartil-embed #visualization-container');
+                        const steps = root.querySelectorAll('.step');
+                        const tooltip = d3.select('#quartil-embed #tooltip');
+                        const rankTitles = root.querySelectorAll('.rank-title');
+
+                        const containerRect = container.node().getBoundingClientRect();
+                        const width = containerRect.width || 600;
+                        const height = containerRect.height || 600;
+
+                        const config = {
+                            totalCircles: 100,
+                            stages: {
+                                'stage-1': { name: 'Primeira Etapa', total: 100, intercepted: 33, targetY: 0.35 },
+                                'stage-2': { name: 'Segunda Etapa', total: 100, intercepted: 50, targetY: 0.50 },
+                                'stage-3': { name: 'Terceira Etapa', total: 100, intercepted: 67, targetY: 0.50 }
+                            }
+                        };
+
+                        let nodes = [];
+                        let simulation;
+
+                        function createInitialNodes() {
+                            nodes = [];
+                            for (let i = 0; i < config.totalCircles; i++) {
+                                nodes.push({
+                                    id: i,
+                                    // Math.random() scale increased slightly to make 100 bubbles stand out more
+                                    radius: Math.random() * 10 + 4,
+                                    color: document.documentElement.classList.contains('light-theme') ? '#e5e7eb' : '#333333',
+                                    quartileData: null,
+                                    isIntercepted: false
+                                });
+                            }
+                        }
+
+                        let isSeparated = false;
+
+                        function updateNodesForStage(stageKey) {
+                            const stageStr = stageKey || 'stage-1';
+                            const stageConfig = config.stages[stageStr];
+
+                            const baseColor = '#2466E0';
+                            const interceptedColor = '#24CAE0';
+
+                            nodes.forEach((node, i) => {
+                                node.isIntercepted = (i < stageConfig.intercepted);
+                                node.color = node.isIntercepted ? interceptedColor : baseColor;
+                            });
+
+                            container.selectAll('.circle')
+                                .transition().duration(500)
+                                .style('background-color', d => d.color)
+                                .style('opacity', 1.0);
+                        }
+
+                        function applyXForces() {
+                            if (isSeparated) {
+                                // Separated: Intercepted go right (75%), non-intercepted go left (25%)
+                                simulation.force('x', d3.forceX(d => d.isIntercepted ? width * 0.75 : width * 0.25).strength(0.5));
+                            } else {
+                                // Joined: All go center (50%)
+                                simulation.force('x', d3.forceX(width * 0.50).strength(0.5));
+                            }
+                            simulation.alpha(0.6).restart();
+                        }
+
+                        function createSimulation() {
+                            const circles = container.selectAll('.circle')
+                                .data(nodes, d => d.id)
+                                .join('div')
+                                .attr('class', 'circle')
+                                .style('width', d => `${d.radius * 2}px`)
+                                .style('height', d => `${d.radius * 2}px`)
+                                .style('background-color', d => d.color);
+
+                            const ticked = () => {
+                                circles.style('transform', d => `translate(${d.x - d.radius}px, ${d.y - d.radius}px)`);
+                            };
+
+                            simulation = d3.forceSimulation(nodes)
+                                .force('collide', d3.forceCollide(d => d.radius + 2.5).strength(1))
+                                .force('x', d3.forceX(width / 2).strength(0.05))
+                                .force('y', d3.forceY(height / 2).strength(0.05))
+                                .on('tick', ticked);
+
+                            // Background click to rejoin
+                            container.on('click', () => {
+                                if (isSeparated) {
+                                    isSeparated = false;
+                                    applyXForces();
+                                }
+                            });
+
+                            // Bubble click to separate (only if it's an intercepted bubble)
+                            circles.on('click', (event, d) => {
+                                if (d.isIntercepted && !isSeparated) {
+                                    event.stopPropagation(); // Prevent container click
+                                    isSeparated = true;
+                                    applyXForces();
+                                }
+                            });
+                        }
+
+                        const handleMouseOver = (event, d) => {
+                            if (!d.quartileData) return;
+                            tooltip.classed('visible', true);
+                            let content = `<h3>${d.quartileData.name}</h3><table>`;
+                            for (const [key, value] of Object.entries(d.quartileData.stats)) {
+                                content += `<tr><td>${key}</td><td>${value}</td></tr>`;
+                            }
+                            content += '</table>';
+                            tooltip.html(content);
+                            container.selectAll('.circle')
+                                .style('opacity', n => (n.quartileData && n.quartileData.id === d.quartileData.id) ? 1 : 0.2);
+                        };
+
+                        const handleMouseMove = (event) => {
+                            tooltip.style('left', (event.clientX + 20) + 'px')
+                                .style('top', (event.clientY - 40) + 'px');
+                        };
+
+                        const handleMouseOut = () => {
+                            tooltip.classed('visible', false);
+                            container.selectAll('.circle').style('opacity', 1);
+                        };
+
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    const view = entry.target.getAttribute('data-view');
+                                    steps.forEach(s => s.classList.remove('is-active'));
+                                    entry.target.classList.add('is-active');
+
+                                    root.querySelector('#legend-quartiles').style.display = (view === 'quartiles' || view === 'correlation') ? 'flex' : 'none';
+
+                                    container.selectAll('.circle').on('mouseover', null).on('mousemove', null).on('mouseout', null);
+                                    document.removeEventListener('mousemove', handleMouseMove);
+                                    rankTitles.forEach(t => t.classList.remove('visible'));
+
+                                    switch (view) {
+                                        case 'stage-1':
+                                        case 'stage-2':
+                                        case 'stage-3':
+                                            updateNodesForStage(view);
+
+                                            // Reset separation on stage change
+                                            isSeparated = false;
+
+                                            const targetY = config.stages[view].targetY;
+
+                                            applyXForces(); // applies center force since isSeparated is false
+                                            simulation.force('y', d3.forceY(height * targetY).strength(0.5));
+                                            break;
+                                    }
+                                    simulation.alpha(0.6).restart();
+                                }
+                            });
+                        }, { threshold: 0.6 });
+
+                        steps.forEach(step => observer.observe(step));
+
+                        createInitialNodes();
+                        createSimulation();
+                        updateNodesForStage('stage-1'); // Initial color update
+
+                        setTimeout(() => {
+                            const first = root.querySelector('.step[data-view="stage-1"]');
+                            if (first) first.classList.add('is-active');
+                        }, 100);
+                    }
+
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', bootQuartil, { once: true });
+                    } else {
+                        bootQuartil();
+                    }
+                })();
+            </script>
+        </section>
+
+        <!-- Call to Action Final -->
+        <section class="container" style="display: flex; justify-content: center; padding: 40px 20px 80px 20px;">
+            <button class="play-button" onclick="window.location.href='https://agent-connect-3ygs.onrender.com/'"
+                aria-label="Inicie sua jornada" style="transform: scale(1.1);">
+                <span class="icon">▶</span>
+                <span class="label"
+                    style="max-width: 250px; opacity: 1; margin-left: 10px; font-weight: 600; font-size: 1.1rem;">Inicie
+                    sua jornada</span>
+            </button>
+        </section>
+
+        <footer class="footer container">
+            <p>© 2026 Agent Connect — Hub de Correlações - AeC</p>
+        </footer>
+
+        <script src="./assets/js/main.js"></script>
+        <script>
+            // Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const iconSun = document.querySelector('.icon-sun');
+            const iconMoon = document.querySelector('.icon-moon');
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('light-theme');
+                    const isLight = document.documentElement.classList.contains('light-theme');
+                    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+                    const logos = document.querySelectorAll('.brand, .hero-left .title img');
+                    if (isLight) {
+                        iconSun.style.display = 'block';
+                        iconMoon.style.display = 'none';
+                        logos.forEach(img => img.src = './static/agent_connect_logo.png');
+                    } else {
+                        iconSun.style.display = 'none';
+                        iconMoon.style.display = 'block';
+                        logos.forEach(img => img.src = './static/logo_branca.png');
+                    }
+                });
             }
-        });
-    }
-  </script>
+        </script>
 </body>
+
 </html>
