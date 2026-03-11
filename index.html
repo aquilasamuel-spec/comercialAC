@@ -354,40 +354,103 @@
                 <div
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; width: 100%;">
                     <!-- Prêmio 1 -->
-                    <article class="info-card"
-                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--mdl-card-bg); border-left: 1px solid var(--mdl-card-border); border-right: 1px solid var(--mdl-card-border); border-bottom: 1px solid var(--mdl-card-border); box-shadow: var(--mdl-card-glow); border-radius: 12px; padding: 32px 24px;">
-                        <img src="./static/best_performance.png" alt="Prêmio Best Performance"
-                            style="height: 120px; object-fit: contain; margin-bottom: 24px;">
-                        <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">Best Performance</h3>
-                        <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;"><strong>Agent
-                                Connect - Match Perfeito:</strong><br />IA para conectar pessoas certas a demandas
-                            certas.<br /><em>Excelência na Gestão de Clientes: Retenção</em></p>
-                    </article>
+                    <div class="conquista-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="conquista-card-inner">
+                            <article class="conquista-card-front">
+                                <img src="./static/best_performance.png" alt="Prêmio Best Performance"
+                                    style="height: 120px; object-fit: contain; margin-bottom: 24px;">
+                                <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">Best
+                                    Performance</h3>
+                                <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;">
+                                    <strong>Agent
+                                        Connect - Match Perfeito:</strong><br />IA para conectar pessoas certas a
+                                    demandas
+                                    certas.<br /><em>Excelência na Gestão de Clientes: Retenção</em>
+                                </p>
+                            </article>
+                            <article class="conquista-card-back">
+                                <img src="./static/logo_bradescard.png" alt="Logo Cliente" class="client-logo">
+                                <div class="info-row">
+                                    <span class="info-label">Resultado Antes:</span>
+                                    <span class="info-value">49,7%</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Resultado Depois:</span>
+                                    <span class="info-value">61,8%</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Delta:</span>
+                                    <span class="info-value">+12,1p.p</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
 
                     <!-- Prêmio 2 -->
-                    <article class="info-card"
-                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; text-align: center;  background: var(--mdl-card-bg); border-left: 1px solid var(--mdl-card-border); border-right: 1px solid var(--mdl-card-border); border-bottom: 1px solid var(--mdl-card-border); box-shadow: var(--mdl-card-glow); border-radius: 12px; padding: 32px 24px;">
-                        <img src="./static/inovativos.png" alt="Premiação Inovativos"
-                            style="height: 120px; object-fit: contain; margin-bottom: 24px;">
-                        <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">Prêmio Inovativos
-                        </h3>
-                        <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;"><strong>Agent
-                                Connect</strong><br /><em>Case destaque (BPO)</em></p>
-                    </article>
+                    <div class="conquista-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="conquista-card-inner">
+                            <article class="conquista-card-front">
+                                <img src="./static/inovativos.png" alt="Premiação Inovativos"
+                                    style="height: 120px; object-fit: contain; margin-bottom: 24px;">
+                                <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">Prêmio
+                                    Inovativos</h3>
+                                <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;">
+                                    <strong>Agent
+                                        Connect</strong><br /><em>Case destaque (BPO)</em>
+                                </p>
+                            </article>
+                            <article class="conquista-card-back">
+                                <img src="./static/logo_bradescard.png" alt="Logo Cliente" class="client-logo">
+                                <div class="info-row">
+                                    <span class="info-label">Resultado Antes:</span>
+                                    <span class="info-value">49,7%</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Resultado Depois:</span>
+                                    <span class="info-value">61,8%</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Delta:</span>
+                                    <span class="info-value">+12,1p.p</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
 
                     <!-- Prêmio 3 -->
-                    <article class="info-card"
-                        style="opacity: 1; animation: none; transform: none; display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--mdl-card-bg); border-left: 1px solid var(--mdl-card-border); border-right: 1px solid var(--mdl-card-border); border-bottom: 1px solid var(--mdl-card-border); box-shadow: var(--mdl-card-glow); border-radius: 12px; padding: 32px 24px;">
-                        <img src="./static/customer_summit.png" alt="The Customer Summit Awards"
-                            style="height: 120px; object-fit: contain; margin-bottom: 24px;">
-                        <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">The Customer Summit
-                            Awards</h3>
-                        <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;">
-                            <strong>Tecnologia | Inteligência Artificial</strong><br />Para um atendimento mais humano.
-                        </p>
-                    </article>
+                    <div class="conquista-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="conquista-card-inner">
+                            <article class="conquista-card-front">
+                                <img src="./static/customer_summit.png" alt="The Customer Summit Awards"
+                                    style="height: 120px; object-fit: contain; margin-bottom: 24px;">
+                                <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--mdl-text);">The Customer
+                                    Summit Awards</h3>
+                                <p style="color: var(--mdl-sub); margin: 0; font-size: 0.95rem; line-height: 1.5;">
+                                    <strong>Tecnologia | Inteligência Artificial</strong><br />Para um atendimento mais
+                                    humano.
+                                </p>
+                            </article>
+                            <article class="conquista-card-back">
+                                <img src="./static/aec.png" alt="Logo Cliente" class="client-logo">
+                                <div class="info-row">
+                                    <span class="info-label">Resultado Antes:</span>
+                                    <span class="info-value">35,0%</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Resultado Depois:</span>
+                                    <span class="info-value">33,4%</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Delta:</span>
+                                    <span class="info-value">-1,6p.p</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+        </div>
         </section>
 
 
@@ -891,7 +954,47 @@
 
                 @media (max-width: 920px) {
                     #producao-embed .workflow-container {
-                        height: min(520px, 60vh);
+                        height: auto;
+                        min-height: auto;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 40px;
+                        padding: 60px 20px;
+                        background-size: 15px 15px;
+                    }
+
+                    #producao-embed .workflow-node {
+                        position: relative !important;
+                        top: auto !important;
+                        left: auto !important;
+                        width: 100%;
+                        max-width: 280px;
+                        height: auto;
+                        min-height: 90px;
+                    }
+
+                    #producao-embed #prod-svg-layer {
+                        display: none;
+                    }
+
+                    /* Adiciona um conector visual vertical simples entre os nós no mobile */
+                    #producao-embed .workflow-node:not(:last-child)::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -40px;
+                        left: 50%;
+                        width: 2px;
+                        height: 40px;
+                        background: linear-gradient(to bottom, var(--p-card-border), transparent);
+                        z-index: -1;
+                    }
+
+                    #producao-embed .info-box {
+                        width: 90%;
+                        left: 5% !important;
+                        top: 20px !important;
+                        position: fixed;
                     }
                 }
             </style>
@@ -1221,8 +1324,22 @@
 
                 #agent-na-pratica #amostra-visualization-container {
                     position: relative;
-                    width: 1100px;
+                    width: 100%;
+                    max-width: 1100px;
                     height: 500px;
+                    margin: 0 auto;
+                }
+
+                @media (max-width: 920px) {
+                    #agent-na-pratica #amostra-visualization-container {
+                        height: 400px;
+                    }
+
+                    #agent-na-pratica .group-label {
+                        font-size: 11px;
+                        padding: 6px;
+                        max-width: 140px;
+                    }
                 }
 
                 #agent-na-pratica .circle {
@@ -1397,8 +1514,9 @@
 
                         const container = d3.select('#amostra-visualization-container');
 
-                        const width = 1100;
-                        const height = 500;
+                        const containerRect = container.node().getBoundingClientRect();
+                        const width = containerRect.width || 1100;
+                        const height = containerRect.height || 500;
 
                         const config = {
                             countPerType: 20, // 20 of each type (80 total)
@@ -1878,6 +1996,12 @@
                     height: 700px;
                 }
 
+                @media (max-width: 920px) {
+                    #quartil-embed #visualization-container {
+                        height: 500px;
+                    }
+                }
+
                 #quartil-embed .circle {
                     position: absolute;
                     border-radius: 50%;
@@ -1956,6 +2080,32 @@
                     left: 10%;
                 }
 
+                @media (max-width: 640px) {
+                    #quartil-embed .rank-title {
+                        font-size: 0.85rem;
+                    }
+
+                    #quartil-embed #rank-title-1 {
+                        top: 5%;
+                        left: 5%;
+                    }
+
+                    #quartil-embed #rank-title-2 {
+                        top: 20%;
+                        left: 5%;
+                    }
+
+                    #quartil-embed #rank-title-3 {
+                        top: 45%;
+                        left: 5%;
+                    }
+
+                    #quartil-embed #rank-title-4 {
+                        top: 80%;
+                        left: 5%;
+                    }
+                }
+
                 #quartil-embed #rank-title-3 {
                     top: 50%;
                     left: 5%;
@@ -1980,15 +2130,41 @@
 
             <div class="solution-model"
                 style="display: flex; flex-direction: column; align-items: center; padding-top: 4rem; margin-bottom: 2rem;">
-                <h2 class="scene-title scene-title-lg" style="text-align:center; margin-bottom: 1rem;">
+                <h2 class="scene-title scene-title-lg" style="text-align:center; margin-bottom: 2rem; letter-spacing: 1px;">
                     <span style="color: var(--mdl-text);">Indicadores </span><span
                         style="color: var(--mdl-accent);">Agent</span>
                 </h2>
-                <p
-                    style="text-align: center; max-width: 800px; color: var(--mdl-text); font-size: 1.1rem; line-height: 1.6; opacity: 0.9;">
-                    Acompanhe a evolução da Taxa de Interceptação em três etapas críticas, demonstrando o crescimento da
-                    eficiência do modelo Agent Connect.
-                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; width: 100%; max-width: 1000px;">
+                    <!-- Card: Taxa de Interceptação -->
+                    <article class="info-card" style="opacity: 1; transform: none; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--mdl-card-border); background: var(--mdl-card-bg); box-shadow: var(--mdl-card-glow); padding: 24px; border-radius: 12px;">
+                        <div class="card-header" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--mdl-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            <h3 style="font-size: 1.25rem; color: var(--mdl-text); margin: 0; font-weight: 700;">Taxa de Interceptação</h3>
+                        </div>
+                        <div class="card-divider" style="height: 1px; background: linear-gradient(to right, var(--mdl-card-border), transparent); margin-bottom: 8px;"></div>
+                        <p style="color: var(--mdl-text); margin: 0; line-height: 1.6; opacity: 0.9; font-size: 1.05rem;">
+                            É o indicador que mede a eficácia do algoritmo perante o volume total de chamadas da operação. Ela corresponde o quanto do volume total foi direcionado conforme a recomendação do modelo.
+                        </p>
+                    </article>
+
+                    <!-- Card: Taxa de Ocupação -->
+                    <article class="info-card" style="opacity: 1; transform: none; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--mdl-card-border); background: var(--mdl-card-bg); box-shadow: var(--mdl-card-glow); padding: 24px; border-radius: 12px;">
+                        <div class="card-header" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--mdl-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <h3 style="font-size: 1.25rem; color: var(--mdl-text); margin: 0; font-weight: 700;">Taxa de Ocupação</h3>
+                        </div>
+                        <div class="card-divider" style="height: 1px; background: linear-gradient(to right, var(--mdl-card-border), transparent); margin-bottom: 8px;"></div>
+                        <p style="color: var(--mdl-text); margin: 0; line-height: 1.6; opacity: 0.9; font-size: 1.05rem;">
+                            É o indicador que mede a eficácia do algoritmo perante o volume total de chamadas do operador. Ela corresponde o quanto do volume atendido pelo operador foi direcionado conforme a recomendação do modelo.
+                        </p>
+                    </article>
+                </div>
             </div>
 
             <main class="quartil-container">
