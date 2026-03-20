@@ -290,13 +290,13 @@ body {
 
 .conquista-card-back .info-row {
   width: 100%;
-  margin: 8px 0;
-  font-size: 0.95rem;
+  margin: 12px 0;
+  font-size: 1.15rem; /* Increased font size */
   color: var(--mdl-text);
   display: flex;
   justify-content: space-between;
   border-bottom: 1px dashed var(--mdl-card-border);
-  padding-bottom: 4px;
+  padding-bottom: 6px;
 }
 
 .conquista-card-back .info-label {
@@ -1416,12 +1416,12 @@ body {
 /* =============================== */
 .solution-model {
   --mdl-bg: #020c1b;
-  --mdl-accent: #00F5D4;
+  --mdl-accent: #0ea5e9;
   --mdl-text: #E6F1FF;
   --mdl-sub: #8892B0;
-  --mdl-card-bg: rgba(10, 25, 47, 0.7);
-  --mdl-card-border: rgba(0, 245, 212, 0.2);
-  --mdl-card-glow: 0 0 40px rgba(0, 245, 212, 0.1);
+  --mdl-card-bg: transparent;
+  --mdl-card-border: rgba(14, 165, 233, 0.4);
+  --mdl-card-glow: none;
   color: var(--mdl-text);
 }
 
@@ -1429,12 +1429,13 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto 1fr 1fr;
+  grid-template-rows: auto auto 1fr 1fr;
   gap: 18px;
 }
 
 .solution-model .header {
   grid-column: 1 / -1;
+  grid-row: 1;
   text-align: center;
   padding-bottom: 12px;
   animation: mdl-fadeIn 0.5s ease-out forwards;
@@ -1487,30 +1488,64 @@ body {
 .solution-model .card-telecom {
   animation-delay: 0.2s;
   grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
 }
 
 .solution-model .card-delivery {
   animation-delay: 0.3s;
   grid-column: 1 / 2;
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
 }
 
 .solution-model .card-finance {
   animation-delay: 0.4s;
   grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
 }
 
 .solution-model .card-ecommerce {
   animation-delay: 0.5s;
   grid-column: 2 / 3;
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
+}
+
+/* Card consolidado no topo */
+.solution-model .consolidated-card {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 24px;
+  gap: 24px;
+}
+
+.solution-model .consolidated-card > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.solution-model .consolidated-card .stat-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--mdl-sub);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.solution-model .consolidated-card .stat-value {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: var(--mdl-accent);
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
 }
 
 .solution-model .info-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 0 60px rgba(0, 245, 212, 0.2);
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.1);
 }
 
 .solution-model .card-header {
@@ -1552,6 +1587,7 @@ body {
   font-weight: 700;
   color: var(--mdl-accent);
   line-height: 1.1;
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
 }
 
 .solution-model .card-body .sub-highlight {
@@ -1560,19 +1596,18 @@ body {
   color: var(--mdl-text);
 }
 
-/* Card principal (tempo) com animação e toggle */
+/* Card principal (tempo) estático */
 .solution-model .card-main {
   grid-column: 3 / 4;
-  grid-row: 2 / 4;
-  display: grid;
-  place-items: center;
+  grid-row: 3 / 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  animation-name: mdl-fadeIn, mdl-pulseGlow;
-  animation-duration: 0.6s, 3s;
-  animation-timing-function: ease-out, ease-in-out;
-  animation-iteration-count: 1, infinite;
-  animation-fill-mode: forwards, none;
-  cursor: pointer;
+  animation-name: mdl-fadeIn;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }
 
 .solution-model .card-main h3 {
@@ -1588,6 +1623,7 @@ body {
   font-weight: 700;
   color: var(--mdl-accent);
   line-height: 1;
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
 }
 
 .solution-model .card-main .time-unit {
@@ -2797,9 +2833,25 @@ html {
   }
 }
 
-/* Respeito a prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  #producao-embed .tech-content {
-    transition: none;
-  }
+/* ============================= */
+/* Theme-specific visibility for logos */
+/* ============================= */
+.dark-only {
+  display: none;
+}
+
+html:not(.light-theme) .dark-only {
+  display: block;
+}
+
+html:not(.light-theme) .light-only {
+  display: none;
+}
+
+html.light-theme .light-only {
+  display: block;
+}
+
+html.light-theme .dark-only {
+  display: none;
 }
