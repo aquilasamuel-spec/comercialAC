@@ -895,7 +895,7 @@
 
   // Boot
   document.addEventListener("DOMContentLoaded", () => {
-    initHeroCanvas();
+    // initHeroCanvas(); // Commented out to use index123.js background instead
     initCarousel();
     initPlayScroll();
     initSummaryModal();
