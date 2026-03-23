@@ -706,11 +706,11 @@
 
                 // Labels
                 svg.append('text').attr('x', leftCX).attr('y', midY - 110)
-                    .attr('text-anchor', 'middle').attr('fill', labelCol)
+                    .attr('text-anchor', 'middle').attr('fill', '#FFFFFF')
                     .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('ATENDIMENTOS');
                 svg.append('text').attr('x', rightCX).attr('y', midY - 110)
-                    .attr('text-anchor', 'middle').attr('fill', labelCol)
+                    .attr('text-anchor', 'middle').attr('fill', '#FFFFFF')
                     .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('OPERADORES');
 
@@ -908,11 +908,11 @@
 
                 // Labels
                 svg.append('text').attr('x', leftCX).attr('y', midY - 110)
-                    .attr('text-anchor', 'middle').attr('fill', labelCol)
+                    .attr('text-anchor', 'middle').attr('fill', '#FFFFFF')
                     .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('ATENDIMENTOS');
                 svg.append('text').attr('x', rightCX).attr('y', midY - 110)
-                    .attr('text-anchor', 'middle').attr('fill', labelCol)
+                    .attr('text-anchor', 'middle').attr('fill', '#FFFFFF')
                     .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('OPERADORES MATCH');
 
@@ -3341,8 +3341,10 @@
                                         <span
                                             style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
                                             Geral</span>
-                                        <span
-                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">75%</span>
+                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">75%</span>
+                                            <span title="Evolução em relação a 75,0%" style="font-size: 0.75rem; font-weight: 600; color: var(--muted, #94a3b8); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">0,0 p.p.</span>
+                                        </div>
                                     </div>
                                     <div style="text-align: right;">
                                         <span
@@ -3390,8 +3392,10 @@
                                         <span
                                             style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
                                             Geral</span>
-                                        <span
-                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">77%</span>
+                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">77%</span>
+                                            <span title="Evolução em relação a 75,0%" style="font-size: 0.75rem; font-weight: 600; color: var(--mdl-accent, #00f5d4); background: rgba(0, 245, 212, 0.1); padding: 2px 6px; border-radius: 4px;">+2,0 p.p.</span>
+                                        </div>
                                     </div>
                                     <div style="text-align: right;">
                                         <span
@@ -3439,8 +3443,10 @@
                                         <span
                                             style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
                                             Geral</span>
-                                        <span
-                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">79%</span>
+                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">79%</span>
+                                            <span title="Evolução em relação a 75,0%" style="font-size: 0.75rem; font-weight: 600; color: var(--mdl-accent, #00f5d4); background: rgba(0, 245, 212, 0.1); padding: 2px 6px; border-radius: 4px;">+4,0 p.p.</span>
+                                        </div>
                                     </div>
                                     <div style="text-align: right;">
                                         <span
