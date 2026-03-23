@@ -152,22 +152,29 @@
 
                 <div
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; text-align: left; position: relative; z-index: 1;">
-                    
+
                     <!-- Box 1 -->
                     <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px 28px; background: rgba(128,128,128,0.03); border-radius: 20px; border: 1px solid var(--card-border); border-top: 4px solid var(--err); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
                         onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'; this.style.background='rgba(239, 68, 68, 0.05)'; this.querySelector('.glow-bg').style.opacity='1';"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(128,128,128,0.03)'; this.querySelector('.glow-bg').style.opacity='0';">
-                        <div class="glow-bg" style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);"></div>
-                        
-                        <div style="background: rgba(239, 68, 68, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--err)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <div class="glow-bg"
+                            style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);">
+                        </div>
+
+                        <div
+                            style="background: rgba(239, 68, 68, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="var(--err)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="8" x2="12" y2="12"></line>
                                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
-                            Chamadas são distribuídas por <span style="color: var(--err); font-weight: 700;">disponibilidade</span>, não por capacidade
+                        <h3
+                            style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
+                            Chamadas são distribuídas por <span
+                                style="color: var(--err); font-weight: 700;">disponibilidade</span>, não por capacidade
                         </h3>
                     </div>
 
@@ -175,16 +182,23 @@
                     <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px 28px; background: rgba(128,128,128,0.03); border-radius: 20px; border: 1px solid var(--card-border); border-top: 4px solid var(--warn); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
                         onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'; this.style.background='rgba(245, 158, 11, 0.05)'; this.querySelector('.glow-bg').style.opacity='1';"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(128,128,128,0.03)'; this.querySelector('.glow-bg').style.opacity='0';">
-                        <div class="glow-bg" style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);"></div>
-                        
-                        <div style="background: rgba(245, 158, 11, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <div class="glow-bg"
+                            style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);">
+                        </div>
+
+                        <div
+                            style="background: rgba(245, 158, 11, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
-                            A performance é analisada <span style="color: var(--warn); font-weight: 700;">depois do impacto</span>
+                        <h3
+                            style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
+                            A performance é analisada <span style="color: var(--warn); font-weight: 700;">depois do
+                                impacto</span>
                         </h3>
                     </div>
 
@@ -192,17 +206,26 @@
                     <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px 28px; background: rgba(128,128,128,0.03); border-radius: 20px; border: 1px solid var(--card-border); border-top: 4px solid var(--muted); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
                         onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'; this.style.background='rgba(154, 163, 178, 0.05)'; this.querySelector('.glow-bg').style.opacity='1';"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(128,128,128,0.03)'; this.querySelector('.glow-bg').style.opacity='0';">
-                        <div class="glow-bg" style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(154, 163, 178, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);"></div>
-                        
-                        <div style="background: rgba(154, 163, 178, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                        <div class="glow-bg"
+                            style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(154, 163, 178, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);">
+                        </div>
+
+                        <div
+                            style="background: rgba(154, 163, 178, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                                </path>
                                 <circle cx="12" cy="12" r="3"></circle>
                                 <line x1="3" y1="3" x2="21" y2="21"></line>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
-                            O potencial real dos operadores é <span style="color: var(--muted); font-weight: 700;">invisível</span>
+                        <h3
+                            style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
+                            O potencial real dos operadores é <span
+                                style="color: var(--muted); font-weight: 700;">invisível</span>
                         </h3>
                     </div>
                 </div>
@@ -271,15 +294,30 @@
 
                         <!-- Arrow Down -->
                         <div style="display: flex; justify-content: center; align-items: center; padding: 8px 0;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--mdl-accent, #0ea5e9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8; animation: bounceDown 2s infinite;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="var(--mdl-accent, #0ea5e9)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" style="opacity: 0.8; animation: bounceDown 2s infinite;">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <polyline points="19 12 12 19 5 12"></polyline>
                             </svg>
                             <style>
                                 @keyframes bounceDown {
-                                    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-                                    40% {transform: translateY(6px);}
-                                    60% {transform: translateY(3px);}
+
+                                    0%,
+                                    20%,
+                                    50%,
+                                    80%,
+                                    100% {
+                                        transform: translateY(0);
+                                    }
+
+                                    40% {
+                                        transform: translateY(6px);
+                                    }
+
+                                    60% {
+                                        transform: translateY(3px);
+                                    }
                                 }
                             </style>
                         </div>
@@ -3342,8 +3380,11 @@
                                             style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
                                             Geral</span>
                                         <div style="display: flex; align-items: center; gap: 6px;">
-                                            <span style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">75%</span>
-                                            <span title="Evolução em relação a 75,0%" style="font-size: 0.75rem; font-weight: 600; color: var(--muted, #94a3b8); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">0,0 p.p.</span>
+                                            <span
+                                                style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">75%</span>
+                                            <span title="Evolução em relação a 75,0%"
+                                                style="font-size: 0.75rem; font-weight: 600; color: var(--muted, #94a3b8); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">0,0
+                                                p.p.</span>
                                         </div>
                                     </div>
                                     <div style="text-align: right;">
@@ -3381,7 +3422,7 @@
                             <div class="card-body" style="display: flex; flex-direction: column;">
                                 <p class="highlight"
                                     style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
-                                    50%</p>
+                                    43%</p>
                                 <p class="sub-highlight"
                                     style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
                                     Taxa de Interceptação</p>
@@ -3393,8 +3434,11 @@
                                             style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
                                             Geral</span>
                                         <div style="display: flex; align-items: center; gap: 6px;">
-                                            <span style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">77%</span>
-                                            <span title="Evolução em relação a 75,0%" style="font-size: 0.75rem; font-weight: 600; color: var(--mdl-accent, #00f5d4); background: rgba(0, 245, 212, 0.1); padding: 2px 6px; border-radius: 4px;">+2,0 p.p.</span>
+                                            <span
+                                                style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">77%</span>
+                                            <span title="Evolução em relação a 75,0%"
+                                                style="font-size: 0.75rem; font-weight: 600; color: var(--mdl-accent, #00f5d4); background: rgba(0, 245, 212, 0.1); padding: 2px 6px; border-radius: 4px;">+2,0
+                                                p.p.</span>
                                         </div>
                                     </div>
                                     <div style="text-align: right;">
@@ -3432,7 +3476,7 @@
                             <div class="card-body" style="display: flex; flex-direction: column;">
                                 <p class="highlight"
                                     style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
-                                    67%</p>
+                                    53%</p>
                                 <p class="sub-highlight"
                                     style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
                                     Taxa de Interceptação</p>
@@ -3444,8 +3488,11 @@
                                             style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
                                             Geral</span>
                                         <div style="display: flex; align-items: center; gap: 6px;">
-                                            <span style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">79%</span>
-                                            <span title="Evolução em relação a 75,0%" style="font-size: 0.75rem; font-weight: 600; color: var(--mdl-accent, #00f5d4); background: rgba(0, 245, 212, 0.1); padding: 2px 6px; border-radius: 4px;">+4,0 p.p.</span>
+                                            <span
+                                                style="font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">79%</span>
+                                            <span title="Evolução em relação a 75,0%"
+                                                style="font-size: 0.75rem; font-weight: 600; color: var(--mdl-accent, #00f5d4); background: rgba(0, 245, 212, 0.1); padding: 2px 6px; border-radius: 4px;">+4,0
+                                                p.p.</span>
                                         </div>
                                     </div>
                                     <div style="text-align: right;">
