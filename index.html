@@ -477,8 +477,8 @@
                 }
 
                 .vertice-card.is-expanded {
-                    min-height: 520px;
-                    /* Uniform height when expanded */
+                    min-height: 620px;
+                    /* Uniform height when expanded - matching largest content */
                 }
 
                 .vertice-card:hover {
@@ -705,13 +705,13 @@
                 const gridStartY = midY - gridSpacing * 1.5;
 
                 // Labels
-                svg.append('text').attr('x', leftCX).attr('y', midY - 100)
+                svg.append('text').attr('x', leftCX).attr('y', midY - 110)
                     .attr('text-anchor', 'middle').attr('fill', labelCol)
-                    .style('font', '600 12px "Space Grotesk", sans-serif')
+                    .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('ATENDIMENTOS');
-                svg.append('text').attr('x', rightCX).attr('y', midY - 95)
+                svg.append('text').attr('x', rightCX).attr('y', midY - 110)
                     .attr('text-anchor', 'middle').attr('fill', labelCol)
-                    .style('font', '600 12px "Space Grotesk", sans-serif')
+                    .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('OPERADORES');
 
                 // Arrow layout: 1 trunk from cluster -> split point -> 4 branches to grids
@@ -907,13 +907,13 @@
                 var matchX = centerCX; // Visual match point
 
                 // Labels
-                svg.append('text').attr('x', leftCX).attr('y', midY - 105)
+                svg.append('text').attr('x', leftCX).attr('y', midY - 110)
                     .attr('text-anchor', 'middle').attr('fill', labelCol)
-                    .style('font', '600 12px "Space Grotesk", sans-serif')
+                    .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('ATENDIMENTOS');
-                svg.append('text').attr('x', rightCX).attr('y', midY - 95)
+                svg.append('text').attr('x', rightCX).attr('y', midY - 110)
                     .attr('text-anchor', 'middle').attr('fill', labelCol)
-                    .style('font', '600 12px "Space Grotesk", sans-serif')
+                    .style('font', '700 18px "Space Grotesk", sans-serif')
                     .style('letter-spacing', '1px').text('OPERADORES MATCH');
 
                 var treeGroup = svg.append('g');
