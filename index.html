@@ -151,57 +151,59 @@
                 </p>
 
                 <div
-                    style="display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto; text-align: left; position: relative; z-index: 1;">
-                    <div style="display: flex; align-items: center; gap: 24px; padding: 24px 32px; background: rgba(128,128,128,0.05); border-radius: 16px; border: 1px solid var(--card-border); border-left: 4px solid var(--err); transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                        onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.1)'"
-                        onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
-                        <div
-                            style="background: rgba(239, 68, 68, 0.1); padding: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                fill="none" stroke="var(--err)" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; text-align: left; position: relative; z-index: 1;">
+                    
+                    <!-- Box 1 -->
+                    <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px 28px; background: rgba(128,128,128,0.03); border-radius: 20px; border: 1px solid var(--card-border); border-top: 4px solid var(--err); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
+                        onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'; this.style.background='rgba(239, 68, 68, 0.05)'; this.querySelector('.glow-bg').style.opacity='1';"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(128,128,128,0.03)'; this.querySelector('.glow-bg').style.opacity='0';">
+                        <div class="glow-bg" style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);"></div>
+                        
+                        <div style="background: rgba(239, 68, 68, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--err)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="8" x2="12" y2="12"></line>
                                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
                             </svg>
                         </div>
-                        <span style="font-size: 1.25rem; color: var(--fg); line-height: 1.4;">Chamadas são distribuídas
-                            por <strong>disponibilidade</strong>, não por capacidade</span>
+                        <h3 style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
+                            Chamadas são distribuídas por <span style="color: var(--err); font-weight: 700;">disponibilidade</span>, não por capacidade
+                        </h3>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 24px; padding: 24px 32px; background: rgba(128,128,128,0.05); border-radius: 16px; border: 1px solid var(--card-border); border-left: 4px solid var(--warn); transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                        onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.1)'"
-                        onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
-                        <div
-                            style="background: rgba(245, 158, 11, 0.1); padding: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                    <!-- Box 2 -->
+                    <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px 28px; background: rgba(128,128,128,0.03); border-radius: 20px; border: 1px solid var(--card-border); border-top: 4px solid var(--warn); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
+                        onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'; this.style.background='rgba(245, 158, 11, 0.05)'; this.querySelector('.glow-bg').style.opacity='1';"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(128,128,128,0.03)'; this.querySelector('.glow-bg').style.opacity='0';">
+                        <div class="glow-bg" style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);"></div>
+                        
+                        <div style="background: rgba(245, 158, 11, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
                         </div>
-                        <span style="font-size: 1.25rem; color: var(--fg); line-height: 1.4;">A performance é analisada
-                            <strong>depois do impacto</strong></span>
+                        <h3 style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
+                            A performance é analisada <span style="color: var(--warn); font-weight: 700;">depois do impacto</span>
+                        </h3>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 24px; padding: 24px 32px; background: rgba(128,128,128,0.05); border-radius: 16px; border: 1px solid var(--card-border); border-left: 4px solid var(--muted); transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                        onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.1)'"
-                        onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
-                        <div
-                            style="background: rgba(154, 163, 178, 0.1); padding: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
-                                </path>
+                    <!-- Box 3 -->
+                    <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px 28px; background: rgba(128,128,128,0.03); border-radius: 20px; border: 1px solid var(--card-border); border-top: 4px solid var(--muted); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
+                        onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'; this.style.background='rgba(154, 163, 178, 0.05)'; this.querySelector('.glow-bg').style.opacity='1';"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(128,128,128,0.03)'; this.querySelector('.glow-bg').style.opacity='0';">
+                        <div class="glow-bg" style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(154, 163, 178, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; transform: translate(30%, -30%);"></div>
+                        
+                        <div style="background: rgba(154, 163, 178, 0.1); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
                                 <circle cx="12" cy="12" r="3"></circle>
                                 <line x1="3" y1="3" x2="21" y2="21"></line>
                             </svg>
                         </div>
-                        <span style="font-size: 1.25rem; color: var(--fg); line-height: 1.4;">O potencial real dos
-                            operadores é <strong>invisível</strong></span>
+                        <h3 style="font-size: 1.25rem; color: var(--fg); line-height: 1.5; margin: 0; font-weight: 600; position: relative; z-index: 2;">
+                            O potencial real dos operadores é <span style="color: var(--muted); font-weight: 700;">invisível</span>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -242,7 +244,7 @@
                         </div>
                     </div>
 
-                    <div style="display: flex; flex-direction: column; gap: 32px;">
+                    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 380px; width: 100%;">
                         <!-- Como funciona hoje -->
                         <div
                             style="background: rgba(128,128,128,0.05); padding: 24px; border-radius: 16px; border: 1px solid var(--card-border); border-left: 4px solid var(--err);">
@@ -265,6 +267,21 @@
                                     pessoas
                                 </li>
                             </ul>
+                        </div>
+
+                        <!-- Arrow Down -->
+                        <div style="display: flex; justify-content: center; align-items: center; padding: 8px 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--mdl-accent, #0ea5e9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8; animation: bounceDown 2s infinite;">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                            <style>
+                                @keyframes bounceDown {
+                                    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+                                    40% {transform: translateY(6px);}
+                                    60% {transform: translateY(3px);}
+                                }
+                            </style>
                         </div>
 
                         <!-- Como deveria ser -->
@@ -453,13 +470,15 @@
                     cursor: pointer;
                     display: flex;
                     flex-direction: column;
-                    align-self: flex-start; /* Individual height control */
+                    align-self: flex-start;
+                    /* Individual height control */
                     position: relative;
                     width: 100%;
                 }
 
                 .vertice-card.is-expanded {
-                    min-height: 520px; /* Uniform height when expanded */
+                    min-height: 520px;
+                    /* Uniform height when expanded */
                 }
 
                 .vertice-card:hover {
@@ -550,7 +569,8 @@
 
                 .vertice-card.is-expanded .vertice-description {
                     opacity: 1;
-                    max-height: 1000px; /* Large enough for content */
+                    max-height: 1000px;
+                    /* Large enough for content */
                     transform: translateY(0);
                     pointer-events: auto;
                     margin-bottom: 24px;
@@ -1093,7 +1113,7 @@
                             </div>
                             <span class="vertice-badge">O Cérebro</span>
                         </div>
-                        <h2 class="vertice-title">Inteligência Offboard</h2>
+                        <h2 class="vertice-title">O Cérebro Fora da Operação</h2>
                     </div>
                     <div class="vertice-card-bottom">
                         <div class="vertice-description">
@@ -1126,7 +1146,7 @@
                             </div>
                             <span class="vertice-badge">Dados</span>
                         </div>
-                        <h2 class="vertice-title">Avaliação Histórica</h2>
+                        <h2 class="vertice-title">Dados que Decidem</h2>
                     </div>
                     <div class="vertice-card-bottom">
                         <div class="vertice-description">
@@ -1160,7 +1180,7 @@
                             </div>
                             <span class="vertice-badge">Estratégia</span>
                         </div>
-                        <h2 class="vertice-title">Roteamento Racional</h2>
+                        <h2 class="vertice-title">Cada Interação é uma Decisão</h2>
                     </div>
                     <div class="vertice-card-bottom">
                         <div class="vertice-description">
@@ -2015,7 +2035,8 @@
                     <span style="color: var(--mdl-text, #ffffff);">Fluxo técnico </span><span
                         style="color: var(--mdl-accent, #00a3ff);">da solução</span>
                 </h2>
-                <p style="text-align:center; color: var(--mdl-sub, #a0aec0); font-size: 1.15rem; margin-top: 12px; font-weight: 500; letter-spacing: 0.5px;">
+                <p
+                    style="text-align:center; color: var(--mdl-sub, #a0aec0); font-size: 1.15rem; margin-top: 12px; font-weight: 500; letter-spacing: 0.5px;">
                     Agent Connect: Do Dado à Decisão
                 </p>
             </header>
@@ -2259,17 +2280,17 @@
                 transform: translateX(-50%);
                 background: rgba(0, 0, 0, 0.4);
                 border: 1px solid rgba(255, 255, 255, 0.15);
-                padding: 8px 14px;
+                padding: 10px 18px;
                 border-radius: 8px;
-                font-size: 0.9rem;
+                font-size: 1.15rem;
                 text-align: center;
                 color: var(--color-text);
                 opacity: 0;
                 transition: opacity 0.6s ease;
                 pointer-events: none;
                 backdrop-filter: blur(4px);
-                max-width: 200px;
-                line-height: 1.3;
+                max-width: 260px;
+                line-height: 1.4;
                 z-index: 20;
             }
 
@@ -2339,9 +2360,9 @@
                 }
 
                 #agent-na-pratica .group-label {
-                    font-size: 11px;
-                    padding: 6px;
-                    max-width: 140px;
+                    font-size: 14px;
+                    padding: 8px 10px;
+                    max-width: 180px;
                 }
             }
 
@@ -2829,7 +2850,8 @@
     </section>
 
     <!-- Seção: Quartis (embed estático) -->
-    <section id="quartil-embed" class="container" style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); padding: 40px; margin-top: 40px; margin-bottom: 40px;">
+    <section id="quartil-embed" class="container"
+        style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); padding: 40px; margin-top: 40px; margin-bottom: 40px;">
         <style>
             #quartil-embed {
                 --color-green: #2ECC71;
@@ -2870,11 +2892,12 @@
                 justify-content: center;
                 align-items: center;
             }
-            
+
             #quartil-embed .steps-wrapper {
                 position: relative;
                 width: 100%;
-                height: 400px; /* Fixed height for the card container */
+                height: 400px;
+                /* Fixed height for the card container */
             }
 
             #quartil-embed .step {
@@ -3012,7 +3035,7 @@
                 color: var(--color-text);
                 transition: all 0.3s ease;
             }
-            
+
             html.light-theme #quartil-embed .carousel-btn {
                 background: rgba(0, 0, 0, 0.05);
                 border-color: rgba(0, 0, 0, 0.1);
@@ -3025,7 +3048,7 @@
                 color: #fff;
                 transform: scale(1.05);
             }
-            
+
             #quartil-embed .carousel-btn:disabled {
                 opacity: 0.3;
                 cursor: not-allowed;
@@ -3197,8 +3220,8 @@
         <div class="solution-model"
             style="display: flex; flex-direction: column; align-items: center; padding-top: 4rem; margin-bottom: 2rem;">
             <h2 class="scene-title scene-title-lg" style="text-align:center; margin-bottom: 2rem; letter-spacing: 1px;">
-                <span style="color: var(--mdl-text);">Indicadores </span><span
-                    style="color: var(--mdl-accent);">Agent</span>
+                <span style="color: var(--mdl-text);">A matemática da </span><span
+                    style="color: var(--mdl-accent);">Decisão</span>
             </h2>
 
             <div
@@ -3211,16 +3234,19 @@
                             stroke="var(--mdl-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
-                        <h3 style="font-size: 1.25rem; color: var(--mdl-text); margin: 0; font-weight: 700;">Taxa de
-                            Interceptação</h3>
+                        <h3 style="font-size: 1.25rem; color: var(--mdl-text); margin: 0; font-weight: 700;">Aderência à
+                            Inteligência</h3>
                     </div>
                     <div class="card-divider"
                         style="height: 1px; background: linear-gradient(to right, var(--mdl-card-border), transparent); margin-bottom: 8px;">
                     </div>
                     <p style="color: var(--mdl-text); margin: 0; line-height: 1.6; opacity: 0.9; font-size: 1.05rem;">
-                        É o indicador que mede a eficácia do algoritmo perante o volume total de chamadas da
-                        operação. Ela corresponde o quanto do volume total foi direcionado conforme a recomendação
-                        do modelo.
+                        Mede o quanto da operação deixa de ser aleatória e passa a seguir decisões orientadas por
+                        modelo.
+                    </p>
+                    <p
+                        style="color: var(--mdl-accent); margin: 16px 0 0 0; font-weight: 700; font-size: 0.95rem; background: rgba(0, 163, 255, 0.08); padding: 12px 16px; border-radius: 8px; border-left: 4px solid var(--mdl-accent);">
+                        Revela o nível de incorporação da inteligência na operação.
                     </p>
                 </article>
 
@@ -3233,21 +3259,29 @@
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
-                        <h3 style="font-size: 1.25rem; color: var(--mdl-text); margin: 0; font-weight: 700;">Taxa de
-                            Ocupação</h3>
+                        <h3 style="font-size: 1.25rem; color: var(--mdl-text); margin: 0; font-weight: 700;">Alocação
+                            Inteligente
+                            de capacidade</h3>
                     </div>
                     <div class="card-divider"
                         style="height: 1px; background: linear-gradient(to right, var(--mdl-card-border), transparent); margin-bottom: 8px;">
                     </div>
                     <p style="color: var(--mdl-text); margin: 0; line-height: 1.6; opacity: 0.9; font-size: 1.05rem;">
-                        É o indicador que mede a eficácia do algoritmo perante o volume total de chamadas do
-                        operador. Ela corresponde o quanto do volume atendido pelo operador foi direcionado conforme
-                        a recomendação do modelo.
+                        Mede o quanto o potencial individual é utilizado de forma intencional, e não por
+                        disponibilidade.
+                    </p>
+                    <p
+                        style="color: var(--mdl-accent); margin: 16px 0 0 0; font-weight: 700; font-size: 0.95rem; background: rgba(0, 163, 255, 0.08); padding: 12px 16px; border-radius: 8px; border-left: 4px solid var(--mdl-accent);">
+                        Aqui, cada operador deixa de ser recurso e passa a ser alocado como vantagem competitiva.
                     </p>
                 </article>
             </div>
         </div>
-
+        <h2 class="scene-title scene-title-lg"
+            style="text-align:center; margin-top: 6rem; margin-bottom: 0.5rem; letter-spacing: 1px;">
+            <span style="color: var(--mdl-text);">Quando a Decisão deixa </span><span
+                style="color: var(--mdl-accent);">de ser Intuição </span>
+        </h2>
         <main class="quartil-container">
             <div id="graphic">
                 <div id="legend-quartiles" class="legend" style="display: none;">
@@ -3274,156 +3308,165 @@
             <div id="steps">
                 <div class="steps-wrapper">
                     <section class="step" data-view="stage-1" data-index="0">
-                    <article class="info-card"
-                        style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
-                        <div class="card-header"
-                            style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" aria-hidden="true" style="stroke: var(--mdl-accent, #00f5d4);">
-                                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
-                                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
-                                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
-                                <line x1="12" y1="20" x2="12.01" y2="20"></line>
-                            </svg>
-                            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">
-                                Start</h2>
-                        </div>
-                        <div class="card-divider"
-                            style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
-                        </div>
-                        <div class="card-body" style="display: flex; flex-direction: column;">
-                            <p class="highlight"
-                                style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
-                                33%</p>
-                            <p class="sub-highlight"
-                                style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
-                                Taxa de Interceptação</p>
+                        <article class="info-card"
+                            style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
+                            <div class="card-header"
+                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true"
+                                    style="stroke: var(--mdl-accent, #00f5d4);">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                                </svg>
+                                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">
+                                    Start</h2>
+                            </div>
+                            <div class="card-divider"
+                                style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
+                            </div>
+                            <div class="card-body" style="display: flex; flex-direction: column;">
+                                <p class="highlight"
+                                    style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
+                                    33%</p>
+                                <p class="sub-highlight"
+                                    style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
+                                    Taxa de Interceptação</p>
 
-                            <div
-                                style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
-                                <div>
-                                    <span
-                                        style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
-                                        Geral</span>
-                                    <span
-                                        style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">75%</span>
-                                </div>
-                                <div style="text-align: right;">
-                                    <span
-                                        style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
-                                        Recomendado</span>
-                                    <span
-                                        style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                <div
+                                    style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
+                                    <div>
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Geral</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">75%</span>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Recomendado</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                </section>
+                        </article>
+                    </section>
 
-                <section class="step" data-view="stage-2" data-index="1">
-                    <article class="info-card"
-                        style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
-                        <div class="card-header"
-                            style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" aria-hidden="true" style="stroke: var(--mdl-accent, #00f5d4);">
-                                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
-                                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
-                                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
-                                <line x1="12" y1="20" x2="12.01" y2="20"></line>
-                            </svg>
-                            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">1ª
-                                Projeção</h2>
-                        </div>
-                        <div class="card-divider"
-                            style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
-                        </div>
-                        <div class="card-body" style="display: flex; flex-direction: column;">
-                            <p class="highlight"
-                                style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
-                                50%</p>
-                            <p class="sub-highlight"
-                                style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
-                                Taxa de Interceptação</p>
+                    <section class="step" data-view="stage-2" data-index="1">
+                        <article class="info-card"
+                            style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
+                            <div class="card-header"
+                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true"
+                                    style="stroke: var(--mdl-accent, #00f5d4);">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                                </svg>
+                                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">1ª
+                                    Projeção</h2>
+                            </div>
+                            <div class="card-divider"
+                                style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
+                            </div>
+                            <div class="card-body" style="display: flex; flex-direction: column;">
+                                <p class="highlight"
+                                    style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
+                                    50%</p>
+                                <p class="sub-highlight"
+                                    style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
+                                    Taxa de Interceptação</p>
 
-                            <div
-                                style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
-                                <div>
-                                    <span
-                                        style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
-                                        Geral</span>
-                                    <span
-                                        style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">77%</span>
-                                </div>
-                                <div style="text-align: right;">
-                                    <span
-                                        style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
-                                        Recomendado</span>
-                                    <span
-                                        style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                <div
+                                    style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
+                                    <div>
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Geral</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">77%</span>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Recomendado</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                </section>
+                        </article>
+                    </section>
 
-                <section class="step" data-view="stage-3" data-index="2">
-                    <article class="info-card"
-                        style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
-                        <div class="card-header"
-                            style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" aria-hidden="true" style="stroke: var(--mdl-accent, #00f5d4);">
-                                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
-                                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
-                                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
-                                <line x1="12" y1="20" x2="12.01" y2="20"></line>
-                            </svg>
-                            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">2ª
-                                Projeção</h2>
-                        </div>
-                        <div class="card-divider"
-                            style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
-                        </div>
-                        <div class="card-body" style="display: flex; flex-direction: column;">
-                            <p class="highlight"
-                                style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
-                                67%</p>
-                            <p class="sub-highlight"
-                                style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
-                                Taxa de Interceptação</p>
+                    <section class="step" data-view="stage-3" data-index="2">
+                        <article class="info-card"
+                            style="display: flex; flex-direction: column; border: 1px solid var(--mdl-card-border, var(--card-border)); background: var(--mdl-card-bg, var(--card-bg)); box-shadow: var(--mdl-card-glow, 0 10px 30px rgba(0,0,0,0.5)); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; width: 100%;">
+                            <div class="card-header"
+                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true"
+                                    style="stroke: var(--mdl-accent, #00f5d4);">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                                </svg>
+                                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--fg, #FFF); margin: 0;">2ª
+                                    Projeção</h2>
+                            </div>
+                            <div class="card-divider"
+                                style="height: 1px; background: linear-gradient(to right, var(--card-border, rgba(255,255,255,0.15)), transparent); margin-bottom: 20px;">
+                            </div>
+                            <div class="card-body" style="display: flex; flex-direction: column;">
+                                <p class="highlight"
+                                    style="font-size: 2.8rem; font-weight: 800; color: var(--mdl-accent, #00f5d4); margin: 0 0 4px 0; line-height: 1; letter-spacing: -1px;">
+                                    67%</p>
+                                <p class="sub-highlight"
+                                    style="font-size: 1.1rem; color: var(--fg, #FFF); margin: 0 0 24px 0; font-weight: 500;">
+                                    Taxa de Interceptação</p>
 
-                            <div
-                                style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
-                                <div>
-                                    <span
-                                        style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
-                                        Geral</span>
-                                    <span
-                                        style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">79%</span>
-                                </div>
-                                <div style="text-align: right;">
-                                    <span
-                                        style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
-                                        Recomendado</span>
-                                    <span
-                                        style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                <div
+                                    style="display: flex; justify-content: space-between; border-top: 1px solid var(--card-border, rgba(255,255,255,0.15)); padding-top: 16px;">
+                                    <div>
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Geral</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">79%</span>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span
+                                            style="display: block; font-size: 0.9rem; color: var(--muted, #94a3b8); margin-bottom: 4px;">NPS
+                                            Recomendado</span>
+                                        <span
+                                            style="display: block; font-size: 1.1rem; font-weight: 600; color: var(--fg, #FFF);">83%</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                </section>
+                        </article>
+                    </section>
                 </div> <!-- /.steps-wrapper -->
-                
+
                 <div class="carousel-controls">
                     <button class="carousel-btn prev-btn" aria-label="Anterior">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
                     </button>
                     <button class="carousel-btn next-btn" aria-label="Próximo">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -3562,21 +3605,21 @@
                     };
 
                     let currentStepIndex = 0;
-                    
+
                     const btnPrev = root.querySelector('.prev-btn');
                     const btnNext = root.querySelector('.next-btn');
 
                     function goToStep(index) {
                         if (index < 0 || index >= steps.length) return;
                         currentStepIndex = index;
-                        
+
                         steps.forEach(s => s.classList.remove('is-active'));
                         const activeStep = steps[index];
                         activeStep.classList.add('is-active');
-                        
+
                         btnPrev.disabled = currentStepIndex === 0;
                         btnNext.disabled = currentStepIndex === steps.length - 1;
-                        
+
                         const view = activeStep.getAttribute('data-view');
                         root.querySelector('#legend-quartiles').style.display = (view === 'quartiles' || view === 'correlation') ? 'flex' : 'none';
 
@@ -3597,14 +3640,14 @@
                         }
                         simulation.alpha(0.6).restart();
                     }
-                    
+
                     btnPrev.addEventListener('click', () => goToStep(currentStepIndex - 1));
                     btnNext.addEventListener('click', () => goToStep(currentStepIndex + 1));
 
                     createInitialNodes();
                     createSimulation();
                     updateNodesForStage('stage-1');
-                    
+
                     goToStep(0);
                 }
 
@@ -3688,20 +3731,20 @@
             background: #000000;
             pointer-events: none;
         }
-        
+
         body {
             background-color: transparent !important;
         }
     </style>
     <script>
-        (function() {
+        (function () {
             const canvas = document.getElementById('particle-bg-canvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
             const particleCount = 200; // Densidade ajustada para 200 conforme solicitado
             const mouse = { x: null, y: null, radius: 150 };
-            
-            window.addEventListener('mousemove', function(event) {
+
+            window.addEventListener('mousemove', function (event) {
                 mouse.x = event.x;
                 mouse.y = event.y;
             });
@@ -3753,11 +3796,11 @@
             function init() {
                 particles = [];
                 const spacing = 45; // Espaçamento da grade
-                
+
                 // Calcula quantas colunas e linhas cabem na tela
                 const cols = Math.floor(canvas.width / spacing);
                 const rows = Math.floor(canvas.height / spacing);
-                
+
                 // Centraliza a grade
                 const offsetX = (canvas.width - (cols * spacing)) / 2 + (spacing / 2);
                 const offsetY = (canvas.height - (rows * spacing)) / 2 + (spacing / 2);
