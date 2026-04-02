@@ -1,6 +1,12 @@
 <html lang="pt-br">
 
 <head>
+    <script>
+        // Trava de segurança: Redirecionar para login caso não haja usuário logado
+        if (!localStorage.getItem('ac_logged_user')) {
+            window.location.href = 'login.html';
+        }
+    </script>
     <meta charset="utf-8">
     <title>AGENT CONNECT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
