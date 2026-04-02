@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark-theme">
+<head>
+    <meta charset="utf-8">
+    <title>AGENT CONNECT - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    
+    <!-- Estilos globais (reaproveita as variáveis raiz e design de botões/tipografia do site) -->
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- Estilos específicos da tela de login -->
+    <link rel="stylesheet" href="/static/assets/css/login.css">
+    
+    <link rel="icon" type="image/png" href="/static/logo_branca.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar simples -->
+    <nav class="mobile-navbar container" style="justify-content: center;">
+        <img class="brand" src="/static/logo_branca.png" alt="Brand Logo" style="max-height: 40px; margin: 10px auto;">
+    </nav>
+
+    <!-- Fundo de bolinhas idêntico ao do site -->
+    <canvas id="particle-bg-canvas"></canvas>
+
+    <main class="login-wrapper">
+        <div class="login-container">
+            <!-- ========== TELA DE LOGIN ========== -->
+            <div id="view-login" class="view on">
+                <div class="text-center">
+                    <img src="/static/logo_branca.png" alt="Logo" class="login-logo">
+                    <h1 class="login-title">Seja bem-vindo</h1>
+                    <p class="login-subtitle">Acesso restrito</p>
+                </div>
+
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="input-login">Login</label>
+                        <input type="text" id="input-login" placeholder="Digite seu login" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-password">Senha</label>
+                        <input type="password" id="input-password" placeholder="Digite sua senha" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-premium w-full" style="margin-top: 1.5rem;">
+                        Entrar
+                    </button>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="#" id="btn-solicitar" style="color: var(--mdl-accent); text-decoration: none; font-size: 0.9rem;">Solicitar Acesso</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ========== TELA DE GESTÃO DE ACESSO ========== -->
+            <div id="view-dashboard" class="view off">
+                <div class="dashboard-header">
+                    <h2 class="scene-title">Gestão de Acesso</h2>
+                    <button id="btn-logout" class="ura-btn logout-btn">Sair</button>
+                </div>
+
+                <div class="action-bar">
+                    <h3 style="color: var(--fg); font-size: 1.1rem;">Usuários Cadastrados</h3>
+                    <button id="btn-add-user" class="btn-premium btn-premium-sm">Adicionar Usuário</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Login</th>
+                                <th>Tipo</th>
+                                <th>Status / Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <!-- Injetado via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Form (Adicionar/Editar Usuário) -->
+    <div id="user-modal" class="modal-backdrop off">
+        <div class="modal-content glass-panel">
+            <h3 id="modal-title" style="color: var(--mdl-accent); margin-bottom: 1rem;">Novo Usuário</h3>
+            <form id="user-form">
+                <input type="hidden" id="user-id">
+                <div class="input-group">
+                    <label for="modal-login">Login</label>
+                    <input type="text" id="modal-login" required autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="modal-password">Senha</label>
+                    <input type="text" id="modal-password" required autocomplete="off">
+                </div>
+                <!-- Campo de Tipo de Acesso ficará em destaque -->
+                <div class="input-group" id="role-group">
+                    <label for="modal-role">Tipo de Acesso</label>
+                    <select id="modal-role" style="width: 100%; padding: 0.8rem 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; border-radius: 8px; font-size: 1rem; outline: none; margin-bottom:0.5rem; cursor:pointer;">
+                        <option value="comum" style="color: #000;">Usuário Comum</option>
+                        <option value="master" style="color: #000;">Master (Admin)</option>
+                    </select>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="button" id="btn-cancel-modal" class="btn-outline" style="flex:1;">Cancelar</button>
+                    <button type="submit" class="btn-premium btn-premium-sm" style="flex:1;">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script de Background igual ao index.html (adaptado levemente) -->
+    <script>
+        (function () {
+            const canvas = document.getElementById('particle-bg-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const mouse = { x: null, y: null, radius: 150 };
+
+            window.addEventListener('mousemove', function (event) {
+                mouse.x = event.x;
+                mouse.y = event.y;
+            });
+
+            class Particle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.baseX = x;
+                    this.baseY = y;
+                    this.size = 1.5;
+                    this.density = (Math.random() * 20) + 10;
+                    this.color = 'rgba(255, 255, 255, 0.25)'; 
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                update() {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let maxDistance = mouse.radius;
+                    let force = (maxDistance - distance) / maxDistance;
+                    let directionX = forceDirectionX * force * this.density;
+                    let directionY = forceDirectionY * force * this.density;
+
+                    if (distance < mouse.radius) {
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    } else {
+                        if (this.x !== this.baseX) {
+                            let dx = this.x - this.baseX;
+                            this.x -= dx / 10;
+                        }
+                        if (this.y !== this.baseY) {
+                            let dy = this.y - this.baseY;
+                            this.y -= dy / 10;
+                        }
+                    }
+                }
+            }
+
+            function init() {
+                particles = [];
+                const spacing = 45;
+                const cols = Math.floor(canvas.width / spacing);
+                const rows = Math.floor(canvas.height / spacing);
+                const offsetX = (canvas.width - (cols * spacing)) / 2 + (spacing / 2);
+                const offsetY = (canvas.height - (rows * spacing)) / 2 + (spacing / 2);
+
+                for (let i = 0; i < cols; i++) {
+                    for (let j = 0; j < rows; j++) {
+                        let x = offsetX + (i * spacing);
+                        let y = offsetY + (j * spacing);
+                        particles.push(new Particle(x, y));
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].draw();
+                    particles[i].update();
+                }
+                requestAnimationFrame(animate);
+            }
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                init();
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            animate();
+        })();
+    </script>
+    <script src="/static/assets/js/login.js"></script>
+</body>
+</html>
