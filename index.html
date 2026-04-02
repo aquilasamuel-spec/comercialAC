@@ -25,24 +25,8 @@
 
         <div
             style="display: flex; align-items: center; gap: 12px; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); z-index: 120;">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar Tema">
-                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="display: none;">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
+            <button id="btn-gestao" class="ura-btn active" style="padding: 0.4rem 1rem !important; border-radius: 6px !important; font-size: 0.85rem; cursor: pointer; border: 1px solid rgba(14, 165, 233, 0.5); background: rgba(14, 165, 233, 0.1); color: #0ea5e9; font-weight: 600;" onclick="window.location.href='login.html?view=gestao'">
+                Gestão de Acesso
             </button>
             <button class="hamburger" aria-label="Menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -51,18 +35,8 @@
     </nav>
 
     <script>
-        // Inline script para evitar flash of unstyled content
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            document.documentElement.classList.add('light-theme');
-            window.addEventListener('DOMContentLoaded', () => {
-                document.querySelector('.icon-sun').style.display = 'block';
-                document.querySelector('.icon-moon').style.display = 'none';
-                document.querySelectorAll('.brand, .hero-left .title img').forEach(img => {
-                    img.src = './static/agent_connect_logo.png';
-                });
-            });
-        }
+        // Tema escuro fixo
+        document.documentElement.classList.remove('light-theme');
     </script>
 
     <header class="hero container">
@@ -3745,31 +3719,7 @@
     </footer>
 
     <script src="./assets/js/main.js"></script>
-    <script>
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('theme-toggle');
-        const iconSun = document.querySelector('.icon-sun');
-        const iconMoon = document.querySelector('.icon-moon');
 
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                document.documentElement.classList.toggle('light-theme');
-                const isLight = document.documentElement.classList.contains('light-theme');
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-                const logos = document.querySelectorAll('.brand, .hero-left .title img');
-                if (isLight) {
-                    iconSun.style.display = 'block';
-                    iconMoon.style.display = 'none';
-                    logos.forEach(img => img.src = './static/agent_connect_logo.png');
-                } else {
-                    iconSun.style.display = 'none';
-                    iconMoon.style.display = 'block';
-                    logos.forEach(img => img.src = './static/logo_branca.png');
-                }
-            });
-        }
-    </script>
     <script src="./assets/js/index123.js"></script>
     <!-- Particle Background Integration -->
     <canvas id="particle-bg-canvas"></canvas>
