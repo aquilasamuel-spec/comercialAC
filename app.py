@@ -27,8 +27,6 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    if 'user_id' not in session:
-        return redirect(url_for('login_page'))
     return render_template('index.html')
 
 @app.route('/login')
